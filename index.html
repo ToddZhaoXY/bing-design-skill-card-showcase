@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="stone">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -588,7 +588,8 @@
     /* ---- Tab Panels ---- */
     .tab-panels {
       flex: 1;
-      padding: 32px;
+      min-width: 0;
+      overflow: hidden;
     }
 
     .tab-panel {
@@ -596,6 +597,13 @@
     }
     .tab-panel--active {
       display: block;
+      padding: 32px;
+      overflow-x: auto;
+    }
+
+    /* ---- Algo panel: white card backgrounds (not themed warm-gray) ---- */
+    #panel-algo .bing-card-hover {
+      background: var(--smtc-background-card-on-primary-default-rest, white) !important;
     }
 
     /* ---- Size Group ---- */
@@ -785,13 +793,13 @@
       <div class="sidebar__section-title">Theme</div>
       <div class="sidebar__group">
         <label class="sidebar__radio-label">
-          <input type="radio" name="theme" value="" checked> Bing Default
-        </label>
-        <label class="sidebar__radio-label">
-          <input type="radio" name="theme" value="stone"> Stone
+          <input type="radio" name="theme" value="stone" checked> Stone
         </label>
         <label class="sidebar__radio-label">
           <input type="radio" name="theme" value="stone-blue"> Stone-blue
+        </label>
+        <label class="sidebar__radio-label">
+          <input type="radio" name="theme" value=""> Bing Blue
         </label>
       </div>
     </div>
@@ -870,6 +878,16 @@
         <button class="bing-tab" role="tab" aria-selected="false" data-tab="attachment">
           <span class="bing-tab__label">Attachment Card</span>
           <span class="bing-tab__count">6</span>
+          <span class="bing-tab__indicator"></span>
+        </button>
+        <button class="bing-tab" role="tab" aria-selected="false" data-tab="magazine">
+          <span class="bing-tab__label">Magazine Template</span>
+          <span class="bing-tab__count">11</span>
+          <span class="bing-tab__indicator"></span>
+        </button>
+        <button class="bing-tab" role="tab" aria-selected="false" data-tab="algo">
+          <span class="bing-tab__label">Segment Algo</span>
+          <span class="bing-tab__count">11</span>
           <span class="bing-tab__indicator"></span>
         </button>
       </div>
@@ -2666,6 +2684,875 @@
 
       </div>
 
+      <!-- ===== MAGAZINE TEMPLATE TAB ===== -->
+      <div class="tab-panel" id="panel-magazine">
+
+        <!-- ==================== ENTITY MAGAZINES (Default Template) ==================== -->
+        <div class="size-group">
+          <h3 class="size-group__title">Default Magazine Template — By Entity Type (11×4 — 1208 × 424px)</h3>
+          <p style="font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-tertiary); margin:0 0 24px;">The Default Magazine Template arranges 4 slots: Large (5×4) visual answer, Medium (3×4) Overview Card, and two Small (3×2) supporting cards. Content adapts per entity type.</p>
+          <div class="size-group__cards" style="flex-direction:column; gap:48px;">
+
+            <!-- ===== Entity: Movie / TV ===== -->
+            <div class="card-showcase">
+              <span class="card-showcase__label">Movie / TV — "Claude: The AI Story"</span>
+              <section style="display:flex; gap:var(--smtc-gap-between-content-x-large, 24px); width:1208px; height:424px;">
+                <!-- Slot A: Video Immersive (5×4) -->
+                <article class="bing-card-hover" style="width:536px; height:424px; flex-shrink:0; border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; position:relative;">
+                  <img src="Thumbnail.png" alt="Claude AI Story Trailer" style="width:100%; height:100%; object-fit:cover;">
+                  <span class="bing-video-duration">2:34</span>
+                  <div class="bing-video-play"><svg class="bing-video-play__icon" viewBox="0 0 16 16"><path d="M5 3.5v9l7-4.5L5 3.5z"/></svg></div>
+                  <div style="position:absolute; bottom:0; left:0; right:0; padding:20px; background:linear-gradient(transparent, rgba(0,0,0,0.7)); display:flex; flex-direction:column; gap:4px;">
+                    <span style="font-size:18px; font-weight:700; color:white; line-height:22px;">Claude: The AI Story — Official Trailer</span>
+                    <div style="display:flex; align-items:center; gap:4px;">
+                      <img src="Thumbnail.png" alt="" style="width:16px; height:16px; border-radius:4px; object-fit:cover;">
+                      <span style="font-size:11px; color:rgba(255,255,255,0.8);">YouTube</span>
+                      <span style="font-size:11px; color:rgba(255,255,255,0.6);">·</span>
+                      <span style="font-size:11px; color:rgba(255,255,255,0.8);">Anthropic</span>
+                    </div>
+                  </div>
+                </article>
+
+                <!-- Slot B: Overview Card (3×4) -->
+                <article class="bing-card-hover" style="width:312px; height:424px; flex-shrink:0; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; padding:20px; display:flex; flex-direction:column; gap:12px;">
+                  <div style="display:flex; align-items:center; gap:4px;">
+                    <span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">Overview</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1l1.5 3.5L13 6l-2.5 2.5L11 12l-3-1.5L5 12l.5-3.5L3 6l3.5-1.5z" fill="var(--smtc-foreground-content-brand-primary, #0078d4)"/></svg>
+                    <button style="margin-left:auto; width:28px; height:28px; border-radius:9999px; border:none; background:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center;"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+                  </div>
+                  <div style="display:flex; flex-direction:column; gap:8px; flex:1; overflow:hidden;">
+                    <div style="display:flex; flex-direction:column; gap:4px;">
+                      <p style="margin:0; font-size:14px; font-weight:700; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">What viewers appreciate most:</p>
+                      <p style="margin:0; font-size:14px; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary); display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">A thought-provoking documentary exploring the rise of AI safety research and Anthropic's mission to build reliable, interpretable AI systems.</p>
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:4px;">
+                      <p style="margin:0; font-size:14px; font-weight:700; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary);">Good fit if you enjoy:</p>
+                      <div style="display:flex; gap:4px; align-items:flex-start;"><svg width="16" height="16" viewBox="0 0 16 16" style="flex-shrink:0; margin-top:3px;"><path d="M3 8l3 3 7-7" fill="none" stroke="var(--smtc-status-success-foreground, #107c10)" stroke-width="2"/></svg><span style="font-size:14px; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary);">Thoughtful explorations of technology ethics</span></div>
+                      <div style="display:flex; gap:4px; align-items:flex-start;"><svg width="16" height="16" viewBox="0 0 16 16" style="flex-shrink:0; margin-top:3px;"><path d="M3 8l3 3 7-7" fill="none" stroke="var(--smtc-status-success-foreground, #107c10)" stroke-width="2"/></svg><span style="font-size:14px; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary);">Behind-the-scenes look at AI research labs</span></div>
+                    </div>
+                    <a href="#" style="display:flex; align-items:center; gap:4px; font-size:13px; font-weight:700; color:var(--bing-smtc-ctrl-link-foreground-brand-rest); text-decoration:none;">Read more <svg width="12" height="12" viewBox="0 0 16 16" fill="var(--bing-smtc-ctrl-link-foreground-brand-rest)"><path d="M6 3l5 5-5 5"/></svg></a>
+                  </div>
+                  <div style="display:flex; flex-direction:column; gap:8px; border-top:1px solid var(--smtc-stroke-divider-default); padding-top:12px;">
+                    <div style="display:flex; gap:8px;"><span style="font-size:14px; font-weight:700; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">Director:</span><span style="font-size:14px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">Dario Amodei</span></div>
+                    <div style="display:flex; gap:8px;"><span style="font-size:14px; font-weight:700; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">Runtime:</span><span style="font-size:14px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">1h 42m</span></div>
+                    <div style="display:flex; gap:8px;"><span style="font-size:14px; font-weight:700; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">Release:</span><span style="font-size:14px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">2025</span></div>
+                  </div>
+                </article>
+
+                <!-- Right column: Slots C & D -->
+                <div style="display:flex; flex-direction:column; gap:var(--smtc-gap-between-content-x-large, 24px); width:312px; flex-shrink:0;">
+                  <!-- Slot C: Where to Watch (3×2) -->
+                  <article class="bing-card-hover" style="width:312px; height:200px; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; padding:20px; display:flex; flex-direction:column; gap:8px;">
+                    <span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">Where to Watch</span>
+                    <div style="display:flex; flex-direction:column; gap:8px; flex:1;">
+                      <div style="display:flex; align-items:center; gap:8px;"><div style="width:32px; height:32px; border-radius:8px; background:var(--bing-smtc-background-ctrl-neutral-rest); display:flex; align-items:center; justify-content:center;"><svg width="16" height="16" viewBox="0 0 16 16" fill="var(--smtc-foreground-content-neutral-primary)"><path d="M2 3h12v8H2zM5 13h6"/></svg></div><div style="display:flex; flex-direction:column;"><span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">Netflix</span><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">Subscription</span></div></div>
+                      <div style="display:flex; align-items:center; gap:8px;"><div style="width:32px; height:32px; border-radius:8px; background:var(--bing-smtc-background-ctrl-neutral-rest); display:flex; align-items:center; justify-content:center;"><svg width="16" height="16" viewBox="0 0 16 16" fill="var(--smtc-foreground-content-neutral-primary)"><path d="M2 3h12v8H2zM5 13h6"/></svg></div><div style="display:flex; flex-direction:column;"><span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">Amazon Prime</span><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">$3.99 rent</span></div></div>
+                      <div style="display:flex; align-items:center; gap:8px;"><div style="width:32px; height:32px; border-radius:8px; background:var(--bing-smtc-background-ctrl-neutral-rest); display:flex; align-items:center; justify-content:center;"><svg width="16" height="16" viewBox="0 0 16 16" fill="var(--smtc-foreground-content-neutral-primary)"><path d="M2 3h12v8H2zM5 13h6"/></svg></div><div style="display:flex; flex-direction:column;"><span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">Apple TV+</span><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">$4.99 buy</span></div></div>
+                    </div>
+                  </article>
+                  <!-- Slot D: Ratings (3×2) -->
+                  <article class="bing-card-hover" style="width:312px; height:200px; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; padding:20px; display:flex; flex-direction:column; gap:12px;">
+                    <span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">Ratings</span>
+                    <div style="display:flex; gap:16px; flex:1; align-items:center; justify-content:center;">
+                      <div style="display:flex; flex-direction:column; align-items:center; gap:4px;"><div style="width:48px; height:48px; border-radius:9999px; background:var(--smtc-status-success-foreground, #107c10); display:flex; align-items:center; justify-content:center;"><span style="font-size:18px; font-weight:700; color:white;">92</span></div><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">IMDb</span></div>
+                      <div style="display:flex; flex-direction:column; align-items:center; gap:4px;"><div style="width:48px; height:48px; border-radius:9999px; background:var(--smtc-status-success-foreground, #107c10); display:flex; align-items:center; justify-content:center;"><span style="font-size:18px; font-weight:700; color:white;">96%</span></div><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">Rotten Tomatoes</span></div>
+                      <div style="display:flex; flex-direction:column; align-items:center; gap:4px;"><div style="width:48px; height:48px; border-radius:9999px; background:var(--smtc-foreground-content-brand-primary, #0078d4); display:flex; align-items:center; justify-content:center;"><span style="font-size:18px; font-weight:700; color:white;">88</span></div><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">Metacritic</span></div>
+                    </div>
+                  </article>
+                </div>
+              </section>
+            </div>
+
+            <!-- ===== Entity: Person ===== -->
+            <div class="card-showcase">
+              <span class="card-showcase__label">Person — "Dario Amodei"</span>
+              <section style="display:flex; gap:var(--smtc-gap-between-content-x-large, 24px); width:1208px; height:424px;">
+                <!-- Slot A: Image Collage (5×4) -->
+                <article class="bing-card-hover" style="width:536px; height:424px; flex-shrink:0; border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:2px;">
+                  <img src="Thumbnail.png" alt="Dario Amodei" style="width:100%; height:100%; object-fit:cover;">
+                  <img src="Thumbnail.png" alt="Dario at conference" style="width:100%; height:100%; object-fit:cover;">
+                  <img src="Thumbnail.png" alt="Anthropic team" style="width:100%; height:100%; object-fit:cover;">
+                  <div style="position:relative;"><img src="Thumbnail.png" alt="Interview" style="width:100%; height:100%; object-fit:cover;"><div style="position:absolute; bottom:8px; right:8px; background:rgba(0,0,0,0.6); color:white; font-size:13px; font-weight:700; padding:4px 12px; border-radius:9999px; cursor:pointer;">See more</div></div>
+                </article>
+
+                <!-- Slot B: Overview Card (3×4) -->
+                <article class="bing-card-hover" style="width:312px; height:424px; flex-shrink:0; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; padding:20px; display:flex; flex-direction:column; gap:12px;">
+                  <div style="display:flex; align-items:center; gap:4px;">
+                    <span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">Overview</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1l1.5 3.5L13 6l-2.5 2.5L11 12l-3-1.5L5 12l.5-3.5L3 6l3.5-1.5z" fill="var(--smtc-foreground-content-brand-primary, #0078d4)"/></svg>
+                  </div>
+                  <div style="display:flex; flex-direction:column; gap:8px; flex:1; overflow:hidden;">
+                    <div style="display:flex; flex-direction:column; gap:4px;">
+                      <p style="margin:0; font-size:14px; font-weight:700; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">Breakout to icon:</p>
+                      <p style="margin:0; font-size:14px; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary); display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden;">Dario Amodei is the CEO and co-founder of Anthropic, an AI safety company. Previously VP of Research at OpenAI, he has been at the forefront of developing safe and beneficial artificial intelligence.</p>
+                    </div>
+                    <a href="#" style="display:flex; align-items:center; gap:4px; font-size:13px; font-weight:700; color:var(--bing-smtc-ctrl-link-foreground-brand-rest); text-decoration:none;">Read more <svg width="12" height="12" viewBox="0 0 16 16" fill="var(--bing-smtc-ctrl-link-foreground-brand-rest)"><path d="M6 3l5 5-5 5"/></svg></a>
+                  </div>
+                  <div style="display:flex; flex-direction:column; gap:8px; border-top:1px solid var(--smtc-stroke-divider-default); padding-top:12px;">
+                    <div style="display:flex; gap:8px;"><span style="font-size:14px; font-weight:700; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">Age:</span><span style="font-size:14px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">41</span></div>
+                    <div style="display:flex; gap:8px;"><span style="font-size:14px; font-weight:700; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">Born:</span><span style="font-size:14px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">Italy</span></div>
+                    <div style="display:flex; gap:8px;"><span style="font-size:14px; font-weight:700; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">Siblings:</span><a href="#" style="font-size:14px; color:#0022a0; text-decoration:none;">Daniela Amodei</a></div>
+                    <div style="display:flex; gap:8px;"><span style="font-size:14px; font-weight:700; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">Occupation:</span><span style="font-size:14px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">CEO, Anthropic</span></div>
+                  </div>
+                  <div style="display:flex; align-items:center;"><div style="display:flex;"><div style="width:24px; height:24px; border-radius:9999px; background:var(--bing-smtc-background-ctrl-neutral-rest); padding:4px; margin-right:-4px;"><img src="Thumbnail.png" alt="" style="width:100%; height:100%; border-radius:9999px; object-fit:cover;"></div><div style="width:24px; height:24px; border-radius:9999px; background:var(--bing-smtc-background-ctrl-neutral-rest); padding:4px; margin-right:-4px;"><img src="Thumbnail.png" alt="" style="width:100%; height:100%; border-radius:9999px; object-fit:cover;"></div></div><div style="display:flex; align-items:center; gap:2px; background:var(--bing-smtc-background-ctrl-neutral-rest); border-radius:9999px; padding:2px 8px 2px 4px; margin-left:6px;"><svg width="12" height="12" viewBox="0 0 16 16" fill="var(--bing-smtc-ctrl-link-foreground-brand-rest)"><path d="M8 1a2 2 0 012 2v3h3a2 2 0 010 4h-3v3a2 2 0 01-4 0v-3H3a2 2 0 010-4h3V3a2 2 0 012-2z"/></svg><span style="font-size:13px; color:var(--bing-smtc-ctrl-link-foreground-brand-rest);">5 Sources</span></div></div>
+                </article>
+
+                <!-- Right column -->
+                <div style="display:flex; flex-direction:column; gap:var(--smtc-gap-between-content-x-large, 24px); width:312px; flex-shrink:0;">
+                  <!-- Slot C: Video Card (3×2) -->
+                  <article class="bing-card-hover" style="width:312px; height:200px; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; display:flex; flex-direction:column;">
+                    <div style="position:relative; width:100%; height:120px;"><img src="Thumbnail.png" alt="Dario interview" style="width:100%; height:100%; object-fit:cover;"><span class="bing-video-duration">15:22</span><div class="bing-video-play" style="width:32px; height:32px;"><svg class="bing-video-play__icon" viewBox="0 0 16 16"><path d="M5 3.5v9l7-4.5L5 3.5z"/></svg></div></div>
+                    <div style="padding:12px 16px; display:flex; flex-direction:column; gap:4px;">
+                      <h3 style="margin:0; font-size:14px; font-weight:700; line-height:22px; color:var(--smtc-foreground-content-neutral-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Dario Amodei on AI Safety and the Future</h3>
+                      <div class="bing-video-meta--s"><img src="Thumbnail.png" alt="" class="bing-video-meta__icon"><span class="bing-video-meta__secondary">TED</span><span class="bing-video-meta__separator">·</span><span class="bing-video-meta__secondary">2.1M views</span></div>
+                    </div>
+                  </article>
+                  <!-- Slot D: Latest News (3×2) -->
+                  <article class="bing-card-hover" style="width:312px; height:200px; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; padding:20px; display:flex; flex-direction:column; gap:8px;">
+                    <span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">Latest News</span>
+                    <div style="display:flex; flex-direction:column; gap:8px; flex:1;">
+                      <article style="display:flex; gap:8px; align-items:flex-start;">
+                        <div style="flex:1; min-width:0;"><h3 style="margin:0; font-size:14px; font-weight:700; line-height:22px; color:var(--smtc-foreground-content-neutral-primary); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">Anthropic raises $2B in new funding round</h3><div style="display:flex; align-items:center; gap:4px; margin-top:4px;"><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">Reuters · 3h</span></div></div>
+                        <img src="Thumbnail.png" alt="" style="width:48px; height:48px; border-radius:8px; object-fit:cover; flex-shrink:0;">
+                      </article>
+                      <article style="display:flex; gap:8px; align-items:flex-start;">
+                        <div style="flex:1; min-width:0;"><h3 style="margin:0; font-size:14px; font-weight:700; line-height:22px; color:var(--smtc-foreground-content-neutral-primary); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">Claude 3.5 Sonnet sets new benchmark records</h3><div style="display:flex; align-items:center; gap:4px; margin-top:4px;"><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">TechCrunch · 5h</span></div></div>
+                        <img src="Thumbnail.png" alt="" style="width:48px; height:48px; border-radius:8px; object-fit:cover; flex-shrink:0;">
+                      </article>
+                    </div>
+                  </article>
+                </div>
+              </section>
+            </div>
+
+            <!-- ===== Entity: Product / Brand ===== -->
+            <div class="card-showcase">
+              <span class="card-showcase__label">Product / Brand — "Claude AI"</span>
+              <section style="display:flex; gap:var(--smtc-gap-between-content-x-large, 24px); width:1208px; height:424px;">
+                <!-- Slot A: Image Gallery (5×4) -->
+                <article class="bing-card-hover" style="width:536px; height:424px; flex-shrink:0; border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; display:flex; flex-direction:column; gap:2px;">
+                  <img src="Thumbnail.png" alt="Claude AI Interface" style="width:100%; flex:1; object-fit:cover; min-height:0;">
+                  <div style="display:flex; gap:2px; height:100px;">
+                    <img src="Thumbnail.png" alt="Claude API" style="flex:1; height:100%; object-fit:cover;">
+                    <img src="Thumbnail.png" alt="Claude Code" style="flex:1; height:100%; object-fit:cover;">
+                    <img src="Thumbnail.png" alt="Claude Team" style="flex:1; height:100%; object-fit:cover;">
+                  </div>
+                </article>
+
+                <!-- Slot B: Overview Card (3×4) -->
+                <article class="bing-card-hover" style="width:312px; height:424px; flex-shrink:0; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; padding:20px; display:flex; flex-direction:column; gap:12px;">
+                  <div style="display:flex; align-items:center; gap:4px;">
+                    <span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">Overview</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1l1.5 3.5L13 6l-2.5 2.5L11 12l-3-1.5L5 12l.5-3.5L3 6l3.5-1.5z" fill="var(--smtc-foreground-content-brand-primary, #0078d4)"/></svg>
+                  </div>
+                  <div style="display:flex; flex-direction:column; gap:8px; flex:1; overflow:hidden;">
+                    <div style="display:flex; flex-direction:column; gap:4px;">
+                      <p style="margin:0; font-size:14px; font-weight:700; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">What users appreciate most:</p>
+                      <p style="margin:0; font-size:14px; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary); display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">Claude is a family of AI assistants created by Anthropic. It can help with writing, analysis, coding, math, and more. Claude is designed to be helpful, harmless, and honest.</p>
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:4px;">
+                      <p style="margin:0; font-size:14px; font-weight:700; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary);">Good fit for:</p>
+                      <div style="display:flex; gap:4px; align-items:flex-start;"><svg width="16" height="16" viewBox="0 0 16 16" style="flex-shrink:0; margin-top:3px;"><path d="M3 8l3 3 7-7" fill="none" stroke="var(--smtc-status-success-foreground, #107c10)" stroke-width="2"/></svg><span style="font-size:14px; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary);">Long-form writing and analysis tasks</span></div>
+                      <div style="display:flex; gap:4px; align-items:flex-start;"><svg width="16" height="16" viewBox="0 0 16 16" style="flex-shrink:0; margin-top:3px;"><path d="M3 8l3 3 7-7" fill="none" stroke="var(--smtc-status-success-foreground, #107c10)" stroke-width="2"/></svg><span style="font-size:14px; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary);">Complex coding and debugging workflows</span></div>
+                    </div>
+                    <a href="#" style="display:flex; align-items:center; gap:4px; font-size:13px; font-weight:700; color:var(--bing-smtc-ctrl-link-foreground-brand-rest); text-decoration:none;">Read more <svg width="12" height="12" viewBox="0 0 16 16" fill="var(--bing-smtc-ctrl-link-foreground-brand-rest)"><path d="M6 3l5 5-5 5"/></svg></a>
+                  </div>
+                  <div style="display:flex; flex-direction:column; gap:8px; border-top:1px solid var(--smtc-stroke-divider-default); padding-top:12px;">
+                    <div style="display:flex; gap:8px;"><span style="font-size:14px; font-weight:700; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">Developer:</span><span style="font-size:14px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">Anthropic</span></div>
+                    <div style="display:flex; gap:8px;"><span style="font-size:14px; font-weight:700; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">Pricing:</span><span style="font-size:14px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">Free / $20 Pro</span></div>
+                    <div style="display:flex; gap:8px;"><span style="font-size:14px; font-weight:700; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">Latest:</span><span style="font-size:14px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">Claude 3.5 Sonnet</span></div>
+                  </div>
+                </article>
+
+                <!-- Right column -->
+                <div style="display:flex; flex-direction:column; gap:var(--smtc-gap-between-content-x-large, 24px); width:312px; flex-shrink:0;">
+                  <!-- Slot C: Video Card (3×2) -->
+                  <article class="bing-card-hover" style="width:312px; height:200px; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; display:flex; flex-direction:column;">
+                    <div style="position:relative; width:100%; height:120px;"><img src="Thumbnail.png" alt="Claude demo" style="width:100%; height:100%; object-fit:cover;"><span class="bing-video-duration">8:15</span><div class="bing-video-play" style="width:32px; height:32px;"><svg class="bing-video-play__icon" viewBox="0 0 16 16"><path d="M5 3.5v9l7-4.5L5 3.5z"/></svg></div></div>
+                    <div style="padding:12px 16px; display:flex; flex-direction:column; gap:4px;">
+                      <h3 style="margin:0; font-size:14px; font-weight:700; line-height:22px; color:var(--smtc-foreground-content-neutral-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Claude 3.5 Sonnet: Live Coding Demo</h3>
+                      <div class="bing-video-meta--s"><img src="Thumbnail.png" alt="" class="bing-video-meta__icon"><span class="bing-video-meta__secondary">YouTube</span><span class="bing-video-meta__separator">·</span><span class="bing-video-meta__secondary">1.2M views</span></div>
+                    </div>
+                  </article>
+                  <!-- Slot D: Expert Reviews (3×2) -->
+                  <article class="bing-card-hover" style="width:312px; height:200px; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; padding:20px; display:flex; flex-direction:column; gap:8px;">
+                    <span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">Expert Reviews</span>
+                    <div style="display:flex; flex-direction:column; gap:8px; flex:1;">
+                      <article style="display:flex; gap:8px; align-items:flex-start;">
+                        <div style="flex:1; min-width:0;"><h3 style="margin:0; font-size:14px; font-weight:700; line-height:22px; color:var(--smtc-foreground-content-neutral-primary); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">"Best AI for long-form writing and analysis"</h3><div style="display:flex; align-items:center; gap:4px; margin-top:4px;"><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">The Verge · 9.2/10</span></div></div>
+                      </article>
+                      <article style="display:flex; gap:8px; align-items:flex-start;">
+                        <div style="flex:1; min-width:0;"><h3 style="margin:0; font-size:14px; font-weight:700; line-height:22px; color:var(--smtc-foreground-content-neutral-primary); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">"Anthropic's Claude sets a new standard for safe AI"</h3><div style="display:flex; align-items:center; gap:4px; margin-top:4px;"><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">Wired · Editor's Choice</span></div></div>
+                      </article>
+                    </div>
+                  </article>
+                </div>
+              </section>
+            </div>
+
+            <!-- ===== Entity: Place / Location ===== -->
+            <div class="card-showcase">
+              <span class="card-showcase__label">Place / Location — "Anthropic HQ"</span>
+              <section style="display:flex; gap:var(--smtc-gap-between-content-x-large, 24px); width:1208px; height:424px;">
+                <!-- Slot A: Image Gallery (5×4) -->
+                <article class="bing-card-hover" style="width:536px; height:424px; flex-shrink:0; border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; display:flex; flex-direction:column; gap:2px;">
+                  <img src="Thumbnail.png" alt="Anthropic HQ exterior" style="width:100%; flex:1; object-fit:cover; min-height:0;">
+                  <div style="display:flex; gap:2px; height:100px;">
+                    <img src="Thumbnail.png" alt="Office interior" style="flex:1; height:100%; object-fit:cover;">
+                    <img src="Thumbnail.png" alt="Conference room" style="flex:1; height:100%; object-fit:cover;">
+                    <img src="Thumbnail.png" alt="Lobby" style="flex:1; height:100%; object-fit:cover;">
+                  </div>
+                </article>
+
+                <!-- Slot B: Overview Card — Place variant (3×4) -->
+                <article class="bing-card-hover" style="width:312px; height:424px; flex-shrink:0; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; padding:20px; display:flex; flex-direction:column; gap:12px;">
+                  <div style="display:flex; align-items:center; gap:4px;">
+                    <span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">Overview</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1l1.5 3.5L13 6l-2.5 2.5L11 12l-3-1.5L5 12l.5-3.5L3 6l3.5-1.5z" fill="var(--smtc-foreground-content-brand-primary, #0078d4)"/></svg>
+                  </div>
+                  <div style="display:flex; flex-direction:column; gap:8px;">
+                    <div style="display:flex; gap:8px; align-items:flex-start;"><svg width="16" height="16" viewBox="0 0 16 16" fill="var(--bing-smtc-foreground-content-neutral-tertiary)" style="flex-shrink:0; margin-top:3px;"><path d="M8 1a5 5 0 015 5c0 3.5-5 9-5 9S3 9.5 3 6a5 5 0 015-5zm0 3a2 2 0 100 4 2 2 0 000-4z"/></svg><span style="font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">427 N Tatnall St, San Francisco, CA 94102</span></div>
+                    <div style="display:flex; gap:8px; align-items:flex-start;"><svg width="16" height="16" viewBox="0 0 16 16" fill="var(--bing-smtc-foreground-content-neutral-tertiary)" style="flex-shrink:0; margin-top:3px;"><path d="M8 1a7 7 0 107 7A7 7 0 008 1zm3 8H8V4h1.5v3.5H11z"/></svg><span style="font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">Mon-Fri: 9:00 AM – 6:00 PM</span></div>
+                    <div style="display:flex; gap:8px; align-items:flex-start;"><svg width="16" height="16" viewBox="0 0 16 16" fill="var(--bing-smtc-foreground-content-neutral-tertiary)" style="flex-shrink:0; margin-top:3px;"><path d="M2 4l6 4 6-4v8H2z"/></svg><a href="#" style="font-size:14px; line-height:22px; color:#0022a0; text-decoration:none;">anthropic.com</a></div>
+                  </div>
+                  <div style="display:flex; flex-direction:column; gap:8px; border-top:1px solid var(--smtc-stroke-divider-default); padding-top:12px;">
+                    <span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">Amenities</span>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px 12px;">
+                      <div style="display:flex; gap:4px; align-items:center;"><svg width="14" height="14" viewBox="0 0 16 16" fill="var(--bing-smtc-foreground-content-neutral-tertiary)"><path d="M3 8l3 3 7-7" fill="none" stroke="var(--smtc-status-success-foreground)" stroke-width="2"/></svg><span style="font-size:13px; color:var(--smtc-foreground-content-neutral-secondary);">WiFi</span></div>
+                      <div style="display:flex; gap:4px; align-items:center;"><svg width="14" height="14" viewBox="0 0 16 16" fill="var(--bing-smtc-foreground-content-neutral-tertiary)"><path d="M3 8l3 3 7-7" fill="none" stroke="var(--smtc-status-success-foreground)" stroke-width="2"/></svg><span style="font-size:13px; color:var(--smtc-foreground-content-neutral-secondary);">Parking</span></div>
+                      <div style="display:flex; gap:4px; align-items:center;"><svg width="14" height="14" viewBox="0 0 16 16" fill="var(--bing-smtc-foreground-content-neutral-tertiary)"><path d="M3 8l3 3 7-7" fill="none" stroke="var(--smtc-status-success-foreground)" stroke-width="2"/></svg><span style="font-size:13px; color:var(--smtc-foreground-content-neutral-secondary);">Gym</span></div>
+                      <div style="display:flex; gap:4px; align-items:center;"><svg width="14" height="14" viewBox="0 0 16 16" fill="var(--bing-smtc-foreground-content-neutral-tertiary)"><path d="M3 8l3 3 7-7" fill="none" stroke="var(--smtc-status-success-foreground)" stroke-width="2"/></svg><span style="font-size:13px; color:var(--smtc-foreground-content-neutral-secondary);">Café</span></div>
+                      <div style="display:flex; gap:4px; align-items:center;"><svg width="14" height="14" viewBox="0 0 16 16" fill="var(--bing-smtc-foreground-content-neutral-tertiary)"><path d="M3 8l3 3 7-7" fill="none" stroke="var(--smtc-status-success-foreground)" stroke-width="2"/></svg><span style="font-size:13px; color:var(--smtc-foreground-content-neutral-secondary);">EV Charging</span></div>
+                      <div style="display:flex; gap:4px; align-items:center;"><svg width="14" height="14" viewBox="0 0 16 16" fill="var(--bing-smtc-foreground-content-neutral-tertiary)"><path d="M3 8l3 3 7-7" fill="none" stroke="var(--smtc-status-success-foreground)" stroke-width="2"/></svg><span style="font-size:13px; color:var(--smtc-foreground-content-neutral-secondary);">Bike Room</span></div>
+                    </div>
+                  </div>
+                  <div style="display:flex; gap:8px; margin-top:auto;">
+                    <a href="#" style="flex:1; padding:8px 16px; background:var(--smtc-background-ctrl-brand-rest); color:var(--smtc-foreground-ctrl-on-brand-rest); font-size:14px; font-weight:700; text-align:center; border-radius:var(--smtc-corner-ctrl-rest); text-decoration:none;">Website</a>
+                    <a href="#" style="flex:1; padding:8px 16px; background:var(--smtc-background-ctrl-subtle-rest); color:var(--smtc-foreground-ctrl-on-subtle-rest); font-size:14px; font-weight:700; text-align:center; border-radius:var(--smtc-corner-ctrl-rest); text-decoration:none; border:1px solid var(--smtc-stroke-ctrl-default);">Contact us</a>
+                  </div>
+                </article>
+
+                <!-- Right column -->
+                <div style="display:flex; flex-direction:column; gap:var(--smtc-gap-between-content-x-large, 24px); width:312px; flex-shrink:0;">
+                  <!-- Slot C: Video tour (3×2) -->
+                  <article class="bing-card-hover" style="width:312px; height:200px; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; display:flex; flex-direction:column;">
+                    <div style="position:relative; width:100%; height:120px;"><img src="Thumbnail.png" alt="Office tour" style="width:100%; height:100%; object-fit:cover;"><span class="bing-video-duration">6:42</span><div class="bing-video-play" style="width:32px; height:32px;"><svg class="bing-video-play__icon" viewBox="0 0 16 16"><path d="M5 3.5v9l7-4.5L5 3.5z"/></svg></div></div>
+                    <div style="padding:12px 16px; display:flex; flex-direction:column; gap:4px;">
+                      <h3 style="margin:0; font-size:14px; font-weight:700; line-height:22px; color:var(--smtc-foreground-content-neutral-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Inside Anthropic's San Francisco Office</h3>
+                      <div class="bing-video-meta--s"><img src="Thumbnail.png" alt="" class="bing-video-meta__icon"><span class="bing-video-meta__secondary">Bloomberg</span><span class="bing-video-meta__separator">·</span><span class="bing-video-meta__secondary">480K views</span></div>
+                    </div>
+                  </article>
+                  <!-- Slot D: Map (3×2) -->
+                  <article class="bing-card-hover" style="width:312px; height:200px; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; display:flex; flex-direction:column;">
+                    <div style="flex:1; background:var(--bing-smtc-background-ctrl-neutral-rest); display:flex; align-items:center; justify-content:center; position:relative;">
+                      <svg width="48" height="48" viewBox="0 0 16 16" fill="var(--bing-smtc-foreground-content-neutral-tertiary)"><path d="M8 1a5 5 0 015 5c0 3.5-5 9-5 9S3 9.5 3 6a5 5 0 015-5zm0 3a2 2 0 100 4 2 2 0 000-4z"/></svg>
+                      <span style="position:absolute; bottom:8px; right:8px; font-size:11px; font-weight:700; color:var(--bing-smtc-foreground-content-neutral-tertiary);">Map placeholder</span>
+                    </div>
+                    <div style="padding:12px 16px;"><span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">Anthropic HQ · San Francisco</span></div>
+                  </article>
+                </div>
+              </section>
+            </div>
+
+            <!-- ===== Entity: Plant / Object ===== -->
+            <div class="card-showcase">
+              <span class="card-showcase__label">Plant / Object — "Constitutional AI"</span>
+              <section style="display:flex; gap:var(--smtc-gap-between-content-x-large, 24px); width:1208px; height:424px;">
+                <!-- Slot A: Image Collage (5×4) -->
+                <article class="bing-card-hover" style="width:536px; height:424px; flex-shrink:0; border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:2px;">
+                  <img src="Thumbnail.png" alt="AI Safety diagram" style="width:100%; height:100%; object-fit:cover;">
+                  <img src="Thumbnail.png" alt="Research paper" style="width:100%; height:100%; object-fit:cover;">
+                  <img src="Thumbnail.png" alt="Lab visualization" style="width:100%; height:100%; object-fit:cover;">
+                  <img src="Thumbnail.png" alt="Constitutional AI flowchart" style="width:100%; height:100%; object-fit:cover;">
+                </article>
+                <!-- Slot B: Overview Card (3×4) -->
+                <article class="bing-card-hover" style="width:312px; height:424px; flex-shrink:0; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; padding:20px; display:flex; flex-direction:column; gap:12px;">
+                  <div style="display:flex; align-items:center; gap:4px;">
+                    <span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">Overview</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1l1.5 3.5L13 6l-2.5 2.5L11 12l-3-1.5L5 12l.5-3.5L3 6l3.5-1.5z" fill="var(--smtc-foreground-content-brand-primary, #0078d4)"/></svg>
+                  </div>
+                  <div style="display:flex; flex-direction:column; gap:8px; flex:1; overflow:hidden;">
+                    <p style="margin:0; font-size:14px; font-weight:700; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">Effortless alignment:</p>
+                    <p style="margin:0; font-size:14px; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary); display:-webkit-box; -webkit-line-clamp:5; -webkit-box-orient:vertical; overflow:hidden;">Constitutional AI (CAI) is a technique developed by Anthropic for training AI assistants. Rather than relying solely on human feedback, CAI uses a set of principles to guide the AI's behavior during training.</p>
+                    <a href="#" style="display:flex; align-items:center; gap:4px; font-size:13px; font-weight:700; color:var(--bing-smtc-ctrl-link-foreground-brand-rest); text-decoration:none;">Read more <svg width="12" height="12" viewBox="0 0 16 16" fill="var(--bing-smtc-ctrl-link-foreground-brand-rest)"><path d="M6 3l5 5-5 5"/></svg></a>
+                  </div>
+                  <div style="display:flex; flex-direction:column; gap:8px; border-top:1px solid var(--smtc-stroke-divider-default); padding-top:12px;">
+                    <div style="display:flex; gap:8px;"><span style="font-size:14px; font-weight:700; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">Type:</span><span style="font-size:14px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">AI Training Technique</span></div>
+                    <div style="display:flex; gap:8px;"><span style="font-size:14px; font-weight:700; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">Created by:</span><a href="#" style="font-size:14px; color:#0022a0; text-decoration:none;">Anthropic</a></div>
+                    <div style="display:flex; gap:8px;"><span style="font-size:14px; font-weight:700; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">Published:</span><span style="font-size:14px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt);">December 2022</span></div>
+                  </div>
+                </article>
+                <!-- Right column -->
+                <div style="display:flex; flex-direction:column; gap:var(--smtc-gap-between-content-x-large, 24px); width:312px; flex-shrink:0;">
+                  <article class="bing-card-hover" style="width:312px; height:200px; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; display:flex; flex-direction:column;">
+                    <div style="position:relative; width:100%; height:120px;"><img src="Thumbnail.png" alt="CAI explained" style="width:100%; height:100%; object-fit:cover;"><span class="bing-video-duration">22:05</span><div class="bing-video-play" style="width:32px; height:32px;"><svg class="bing-video-play__icon" viewBox="0 0 16 16"><path d="M5 3.5v9l7-4.5L5 3.5z"/></svg></div></div>
+                    <div style="padding:12px 16px; display:flex; flex-direction:column; gap:4px;">
+                      <h3 style="margin:0; font-size:14px; font-weight:700; line-height:22px; color:var(--smtc-foreground-content-neutral-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Constitutional AI Explained in 20 Minutes</h3>
+                      <div class="bing-video-meta--s"><img src="Thumbnail.png" alt="" class="bing-video-meta__icon"><span class="bing-video-meta__secondary">Anthropic</span><span class="bing-video-meta__separator">·</span><span class="bing-video-meta__secondary">890K views</span></div>
+                    </div>
+                  </article>
+                  <article class="bing-card-hover" style="width:312px; height:200px; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; padding:20px; display:flex; flex-direction:column; gap:8px;">
+                    <span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">Related Articles</span>
+                    <div style="display:flex; flex-direction:column; gap:8px; flex:1;">
+                      <article style="display:flex; gap:8px;"><div style="flex:1;"><h3 style="margin:0; font-size:14px; font-weight:700; line-height:22px; color:var(--smtc-foreground-content-neutral-primary); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">RLHF vs Constitutional AI: A Comparison</h3><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">Anthropic Research · 2024</span></div><img src="Thumbnail.png" alt="" style="width:48px; height:48px; border-radius:8px; object-fit:cover; flex-shrink:0;"></article>
+                      <article style="display:flex; gap:8px;"><div style="flex:1;"><h3 style="margin:0; font-size:14px; font-weight:700; line-height:22px; color:var(--smtc-foreground-content-neutral-primary); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">Anthropic's approach to AI safety research</h3><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">anthropic.com · 2024</span></div><img src="Thumbnail.png" alt="" style="width:48px; height:48px; border-radius:8px; object-fit:cover; flex-shrink:0;"></article>
+                    </div>
+                  </article>
+                </div>
+              </section>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ==================== LAYOUT TEMPLATES ==================== -->
+        <div class="size-group">
+          <h3 class="size-group__title">Layout Templates — 6 Fixed Templates (11×4 — 1208 × 424px)</h3>
+          <p style="font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-tertiary); margin:0 0 24px;">The Magazine Layout System allows ONLY these 6 fixed templates. Each fills all 44 grid units (11 columns × 4 rows). No custom grid filling is permitted.</p>
+          <div class="size-group__cards" style="flex-direction:column; gap:48px;">
+
+            <!-- Template 1: The Dashboard Mix -->
+            <div class="card-showcase">
+              <span class="card-showcase__label">Template 1 — "The Dashboard Mix" (4×4 + 2×4 + 3×2 + 2×2 + 5×2)</span>
+              <section style="display:grid; grid-template-columns:repeat(11, 88px); grid-template-rows:repeat(4, 88px); gap:24px; width:1208px; height:424px;">
+                <!-- 4×4 -->
+                <article class="bing-card-hover" style="grid-column:span 4; grid-row:span 4; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; display:flex; flex-direction:column;">
+                  <div style="position:relative; flex:1; min-height:0;"><img src="Thumbnail.png" alt="" style="width:100%; height:100%; object-fit:cover;"><span class="bing-video-duration">12:34</span><div class="bing-video-play"><svg class="bing-video-play__icon" viewBox="0 0 16 16"><path d="M5 3.5v9l7-4.5L5 3.5z"/></svg></div></div>
+                  <div style="padding:16px 20px; display:flex; flex-direction:column; gap:4px;">
+                    <h3 style="margin:0; font-size:18px; font-weight:700; line-height:22px; color:var(--smtc-foreground-content-neutral-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Claude 3.5 Sonnet: Full Demo</h3>
+                    <div class="bing-video-meta--s"><img src="Thumbnail.png" alt="" class="bing-video-meta__icon"><span class="bing-video-meta__secondary">YouTube · Anthropic</span></div>
+                  </div>
+                </article>
+                <!-- 2×4 -->
+                <article class="bing-card-hover" style="grid-column:span 2; grid-row:span 4; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); padding:20px; display:flex; flex-direction:column; gap:8px; overflow:hidden;">
+                  <span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">AI Safety</span>
+                  <p style="margin:0; font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt); flex:1; overflow:hidden;">Anthropic's approach to AI safety is grounded in the belief that as AI systems become more capable, ensuring they are safe and beneficial becomes critical. The company focuses on developing AI that is reliable, interpretable, and steerable.</p>
+                  <div style="display:flex; gap:4px; align-items:center;"><img src="Thumbnail.png" alt="" style="width:16px; height:16px; border-radius:4px; object-fit:cover;"><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">anthropic.com</span></div>
+                </article>
+                <!-- 3×2 -->
+                <article class="bing-card-hover" style="grid-column:span 3; grid-row:span 2; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); padding:20px; display:flex; flex-direction:column; gap:8px; overflow:hidden;">
+                  <div style="display:flex; align-items:center; gap:4px;"><span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary); flex:1;">What is Claude?</span></div>
+                  <p style="margin:0; font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt); flex:1; overflow:hidden;">Claude is a family of AI assistants created by Anthropic. It can help with writing, analysis, coding, math, and more.</p>
+                  <div style="display:flex; gap:4px; align-items:center;"><img src="Thumbnail.png" alt="" style="width:16px; height:16px; border-radius:4px; object-fit:cover;"><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">Anthropic</span></div>
+                </article>
+                <!-- 2×2 -->
+                <article class="bing-card-hover" style="grid-column:span 2; grid-row:span 2; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); padding:20px; display:flex; flex-direction:column; gap:8px; overflow:hidden;">
+                  <span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">Anthropic</span>
+                  <p style="margin:0; font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt); flex:1; overflow:hidden;">AI safety company building reliable, interpretable AI systems.</p>
+                  <div style="display:flex; gap:4px; align-items:center;"><img src="Thumbnail.png" alt="" style="width:16px; height:16px; border-radius:4px;"><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">anthropic.com</span></div>
+                </article>
+                <!-- 5×2 -->
+                <article class="bing-card-hover" style="grid-column:span 5; grid-row:span 2; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); padding:20px; display:flex; flex-direction:column; gap:8px; overflow:hidden;">
+                  <div style="display:flex; align-items:center; justify-content:space-between;"><span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">About Anthropic</span><span style="font-size:13px; font-weight:700; color:var(--bing-smtc-ctrl-link-foreground-brand-rest); cursor:pointer;">See more</span></div>
+                  <div style="display:flex; gap:8px; flex:1; min-height:0;">
+                    <p style="margin:0; font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt); flex:1; overflow:hidden;">Anthropic is an AI safety company founded in 2021 by siblings Dario and Daniela Amodei. The company is headquartered in San Francisco and has raised over $7 billion in funding. Anthropic's flagship product is Claude.</p>
+                    <img src="Thumbnail.png" alt="" style="width:56px; height:56px; border-radius:8px; object-fit:cover; flex-shrink:0;">
+                  </div>
+                  <div style="display:flex; gap:4px; align-items:center;"><img src="Thumbnail.png" alt="" style="width:16px; height:16px; border-radius:4px;"><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">Wikipedia</span></div>
+                </article>
+              </section>
+            </div>
+
+            <!-- Template 2: The Two-Row Split -->
+            <div class="card-showcase">
+              <span class="card-showcase__label">Template 2 — "The Two-Row Split" (Top: 3×2 + 2×2 + 3×2 + 3×2 | Bottom: 5×2 + 6×2)</span>
+              <section style="display:grid; grid-template-columns:repeat(11, 88px); grid-template-rows:repeat(4, 88px); gap:24px; width:1208px; height:424px;">
+                <article class="bing-card-hover" style="grid-column:span 3; grid-row:span 2; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; display:flex; flex-direction:column;">
+                  <div style="position:relative; flex:1; min-height:0;"><img src="Thumbnail.png" alt="" style="width:100%; height:100%; object-fit:cover;"><span class="bing-video-duration">5:22</span><div class="bing-video-play" style="width:32px; height:32px;"><svg class="bing-video-play__icon" viewBox="0 0 16 16"><path d="M5 3.5v9l7-4.5L5 3.5z"/></svg></div></div>
+                  <div style="padding:8px 16px;"><h3 style="margin:0; font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Claude Code: AI Coding Agent</h3></div>
+                </article>
+                <article class="bing-card-hover" style="grid-column:span 2; grid-row:span 2; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); padding:20px; display:flex; flex-direction:column; gap:8px; overflow:hidden;">
+                  <span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">Anthropic</span>
+                  <p style="margin:0; font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt); flex:1; overflow:hidden;">AI safety company building reliable, interpretable AI systems.</p>
+                  <div style="display:flex; gap:4px; align-items:center;"><img src="Thumbnail.png" alt="" style="width:16px; height:16px; border-radius:4px;"><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">anthropic.com</span></div>
+                </article>
+                <article class="bing-card-hover" style="grid-column:span 3; grid-row:span 2; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden;"><img src="Thumbnail.png" alt="Anthropic Research" style="width:100%; height:100%; object-fit:cover;"></article>
+                <article class="bing-card-hover" style="grid-column:span 3; grid-row:span 2; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); padding:20px; display:flex; flex-direction:column; gap:8px; overflow:hidden;">
+                  <span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">AI Safety</span>
+                  <p style="margin:0; font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt); flex:1; overflow:hidden;">Anthropic's approach to AI safety is grounded in developing AI that is reliable, interpretable, and steerable.</p>
+                  <span style="font-size:13px; font-weight:700; color:var(--bing-smtc-ctrl-link-foreground-brand-rest);">Continue reading</span>
+                </article>
+                <article class="bing-card-hover" style="grid-column:span 5; grid-row:span 2; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); padding:20px; display:flex; flex-direction:column; gap:8px; overflow:hidden;">
+                  <span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">About Anthropic</span>
+                  <div style="display:flex; gap:8px; flex:1; min-height:0;">
+                    <p style="margin:0; font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt); flex:1; overflow:hidden;">Anthropic is an AI safety company founded in 2021 by Dario and Daniela Amodei. Headquartered in San Francisco, Anthropic's flagship product is Claude.</p>
+                    <img src="Thumbnail.png" alt="" style="width:56px; height:56px; border-radius:8px; object-fit:cover; flex-shrink:0;">
+                  </div>
+                  <div style="display:flex; gap:4px; align-items:center;"><img src="Thumbnail.png" alt="" style="width:16px; height:16px; border-radius:4px;"><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">Wikipedia</span></div>
+                </article>
+                <article class="bing-card-hover" style="grid-column:span 6; grid-row:span 2; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; display:flex; flex-direction:column;">
+                  <div style="position:relative; flex:1; min-height:0;"><img src="Thumbnail.png" alt="" style="width:100%; height:100%; object-fit:cover;"><span class="bing-video-duration">8:15</span><div class="bing-video-play"><svg class="bing-video-play__icon" viewBox="0 0 16 16"><path d="M5 3.5v9l7-4.5L5 3.5z"/></svg></div></div>
+                  <div style="padding:8px 16px;"><h3 style="margin:0; font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Claude 3.5 Sonnet: Live Coding Demo — Building a Full-Stack App</h3></div>
+                </article>
+              </section>
+            </div>
+
+            <!-- Template 3: The Hero Left (same as Default Magazine) -->
+            <div class="card-showcase">
+              <span class="card-showcase__label">Template 3 — "The Hero Left" (5×4 + 3×4 + 3×2 + 3×2) — Default Magazine Template</span>
+              <section style="display:grid; grid-template-columns:repeat(11, 88px); grid-template-rows:repeat(4, 88px); gap:24px; width:1208px; height:424px;">
+                <article class="bing-card-hover" style="grid-column:span 5; grid-row:span 4; border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; position:relative;">
+                  <img src="Thumbnail.png" alt="Claude Hero" style="width:100%; height:100%; object-fit:cover;">
+                  <div style="position:absolute; bottom:0; left:0; right:0; padding:20px; background:linear-gradient(transparent, rgba(0,0,0,0.7));"><span style="font-size:18px; font-weight:700; color:white;">Claude 3.5 Sonnet — Next-Gen AI</span></div>
+                </article>
+                <article class="bing-card-hover" style="grid-column:span 3; grid-row:span 4; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); padding:20px; display:flex; flex-direction:column; gap:8px; overflow:hidden;">
+                  <span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">Constitutional AI</span>
+                  <p style="margin:0; font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt); flex:1; overflow:hidden;">Constitutional AI (CAI) is a technique developed by Anthropic for training AI assistants. Rather than relying solely on human feedback, CAI uses a set of principles (a "constitution") to guide the AI's behavior during training. The process involves two main phases: supervised learning and reinforcement learning.</p>
+                  <div style="display:flex; gap:4px; align-items:center;"><img src="Thumbnail.png" alt="" style="width:16px; height:16px; border-radius:4px;"><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">anthropic.com/research</span></div>
+                </article>
+                <article class="bing-card-hover" style="grid-column:span 3; grid-row:span 2; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden;"><img src="Thumbnail.png" alt="Research" style="width:100%; height:100%; object-fit:cover;"></article>
+                <article class="bing-card-hover" style="grid-column:span 3; grid-row:span 2; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); padding:20px; display:flex; flex-direction:column; gap:8px; overflow:hidden;">
+                  <span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">Funding</span>
+                  <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; flex:1;">
+                    <div><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">Total Raised</span><p style="margin:4px 0 0; font-size:18px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">$7.3B</p></div>
+                    <div><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">Valuation</span><p style="margin:4px 0 0; font-size:18px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">$18.4B</p></div>
+                    <div><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">Founded</span><p style="margin:4px 0 0; font-size:18px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">2021</p></div>
+                    <div><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">Employees</span><p style="margin:4px 0 0; font-size:18px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">1,000+</p></div>
+                  </div>
+                </article>
+              </section>
+            </div>
+
+            <!-- Template 4: The Hero Wide -->
+            <div class="card-showcase">
+              <span class="card-showcase__label">Template 4 — "The Hero Wide" (6×4 + 2×2 + 3×2 + 5×2)</span>
+              <section style="display:grid; grid-template-columns:repeat(11, 88px); grid-template-rows:repeat(4, 88px); gap:24px; width:1208px; height:424px;">
+                <article class="bing-card-hover" style="grid-column:span 6; grid-row:span 4; border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; position:relative;">
+                  <img src="Thumbnail.png" alt="Claude Wide" style="width:100%; height:100%; object-fit:cover;">
+                  <div style="position:absolute; bottom:0; left:0; right:0; padding:20px; background:linear-gradient(transparent, rgba(0,0,0,0.7));"><span style="font-size:24px; font-weight:700; color:white;">Responsible Scaling Policy</span><p style="margin:4px 0 0; font-size:14px; color:rgba(255,255,255,0.8);">A framework for safe AI development at Anthropic</p></div>
+                </article>
+                <article class="bing-card-hover" style="grid-column:span 2; grid-row:span 2; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); padding:20px; display:flex; flex-direction:column; gap:8px; overflow:hidden;">
+                  <span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">Anthropic</span>
+                  <p style="margin:0; font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt); flex:1; overflow:hidden;">AI safety company building reliable systems.</p>
+                  <div style="display:flex; gap:4px; align-items:center;"><img src="Thumbnail.png" alt="" style="width:16px; height:16px; border-radius:4px;"><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">anthropic.com</span></div>
+                </article>
+                <article class="bing-card-hover" style="grid-column:span 3; grid-row:span 2; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden;"><img src="Thumbnail.png" alt="" style="width:100%; height:100%; object-fit:cover;"></article>
+                <article class="bing-card-hover" style="grid-column:span 5; grid-row:span 2; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); padding:20px; display:flex; flex-direction:column; gap:8px; overflow:hidden;">
+                  <div style="display:flex; align-items:center; justify-content:space-between;"><span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">About Anthropic</span><span style="font-size:13px; font-weight:700; color:var(--bing-smtc-ctrl-link-foreground-brand-rest); cursor:pointer;">See more</span></div>
+                  <p style="margin:0; font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt); flex:1; overflow:hidden;">Anthropic is an AI safety company founded in 2021 by Dario and Daniela Amodei. Anthropic's flagship product is Claude, a family of large language models.</p>
+                  <div style="display:flex; gap:4px; align-items:center;"><img src="Thumbnail.png" alt="" style="width:16px; height:16px; border-radius:4px;"><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">Wikipedia</span></div>
+                </article>
+              </section>
+            </div>
+
+            <!-- Template 5: The Hero & Stack -->
+            <div class="card-showcase">
+              <span class="card-showcase__label">Template 5 — "The Hero & Stack" (5×4 + 4× 3×2)</span>
+              <section style="display:grid; grid-template-columns:repeat(11, 88px); grid-template-rows:repeat(4, 88px); gap:24px; width:1208px; height:424px;">
+                <article class="bing-card-hover" style="grid-column:span 5; grid-row:span 4; border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; position:relative;">
+                  <img src="Thumbnail.png" alt="Hero" style="width:100%; height:100%; object-fit:cover;">
+                  <span class="bing-video-duration">12:34</span>
+                  <div class="bing-video-play"><svg class="bing-video-play__icon" viewBox="0 0 16 16"><path d="M5 3.5v9l7-4.5L5 3.5z"/></svg></div>
+                </article>
+                <article class="bing-card-hover" style="grid-column:span 3; grid-row:span 2; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden;"><img src="Thumbnail.png" alt="" style="width:100%; height:100%; object-fit:cover;"></article>
+                <article class="bing-card-hover" style="grid-column:span 3; grid-row:span 2; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); padding:20px; display:flex; flex-direction:column; gap:8px; overflow:hidden;">
+                  <span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">What is Claude?</span>
+                  <p style="margin:0; font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt); flex:1; overflow:hidden;">Claude is a family of AI assistants by Anthropic. Helpful, harmless, honest.</p>
+                  <div style="display:flex; gap:4px; align-items:center;"><img src="Thumbnail.png" alt="" style="width:16px; height:16px; border-radius:4px;"><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">Anthropic</span></div>
+                </article>
+                <article class="bing-card-hover" style="grid-column:span 3; grid-row:span 2; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); padding:20px; display:flex; flex-direction:column; gap:8px; overflow:hidden;">
+                  <span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary);">AI Safety</span>
+                  <p style="margin:0; font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt); flex:1; overflow:hidden;">Anthropic's approach focuses on developing reliable, interpretable AI.</p>
+                  <span style="font-size:13px; font-weight:700; color:var(--bing-smtc-ctrl-link-foreground-brand-rest);">Continue reading</span>
+                </article>
+                <article class="bing-card-hover" style="grid-column:span 3; grid-row:span 2; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; display:flex; flex-direction:column;">
+                  <div style="position:relative; flex:1; min-height:0;"><img src="Thumbnail.png" alt="" style="width:100%; height:100%; object-fit:cover;"><span class="bing-video-duration">3:45</span><div class="bing-video-play" style="width:32px; height:32px;"><svg class="bing-video-play__icon" viewBox="0 0 16 16"><path d="M5 3.5v9l7-4.5L5 3.5z"/></svg></div></div>
+                  <div style="padding:8px 16px;"><h3 style="margin:0; font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Claude AI: Quick Overview</h3></div>
+                </article>
+              </section>
+            </div>
+
+            <!-- Template 6: The Full Canvas -->
+            <div class="card-showcase">
+              <span class="card-showcase__label">Template 6 — "The Full Canvas" (11×4)</span>
+              <section style="width:1208px; height:424px;">
+                <article class="bing-card-hover" style="width:100%; height:100%; border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; position:relative;">
+                  <img src="Thumbnail.png" alt="Full Canvas" style="width:100%; height:100%; object-fit:cover;">
+                  <div style="position:absolute; bottom:0; left:0; right:0; padding:32px 40px; background:linear-gradient(transparent, rgba(0,0,0,0.8)); display:flex; flex-direction:column; gap:8px;">
+                    <span style="font-size:36px; font-weight:700; color:white; line-height:48px;">Claude 3.5 Sonnet</span>
+                    <p style="margin:0; font-size:18px; line-height:28px; color:rgba(255,255,255,0.8); max-width:600px;">The most intelligent AI assistant yet. Built by Anthropic with safety at its core — helpful, harmless, and honest.</p>
+                    <div style="display:flex; gap:12px; margin-top:8px;">
+                      <a href="#" style="padding:10px 24px; background:var(--smtc-background-ctrl-brand-rest); color:var(--smtc-foreground-ctrl-on-brand-rest); font-size:14px; font-weight:700; border-radius:var(--smtc-corner-ctrl-rest); text-decoration:none;">Try Claude</a>
+                      <a href="#" style="padding:10px 24px; background:rgba(255,255,255,0.15); color:white; font-size:14px; font-weight:700; border-radius:var(--smtc-corner-ctrl-rest); text-decoration:none; border:1px solid rgba(255,255,255,0.3);">Learn more</a>
+                    </div>
+                  </div>
+                </article>
+              </section>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      </div>
+
+      <!-- ===== SEGMENT ALGO TAB ===== -->
+      <div class="tab-panel" id="panel-algo">
+
+        <p style="font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-tertiary); margin:0 0 32px; max-width:648px;">Algo segments are the fundamental search result blocks in the Mainline (648px wide). Each shares a common Attribution row (favicon + source), with content varying by variant. Blocks stack with <code>gap: 0</code>; each manages its own <code>padding-top: 16px</code>.</p>
+
+        <!-- ===== Variant 1: Nav (Navigational Answer) ===== -->
+        <div class="size-group">
+          <h3 class="size-group__title">Variant 1 — Nav (Navigational Answer)</h3>
+          <div class="size-group__cards" style="flex-direction:column; gap:24px;">
+            <div class="card-showcase">
+              <span class="card-showcase__label">Nav · Deeplink Grid · 648px</span>
+              <article class="bing-card-hover" style="width:648px; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; padding:16px 20px;">
+                <!-- Attribution (large favicon) -->
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+                  <div style="width:42px; height:42px; border-radius:100px; background:var(--bing-smtc-background-ctrl-neutral-rest, #f5f5f5); border:1px solid var(--smtc-stroke-ctrl-default, rgba(0,0,0,0.1)); display:flex; align-items:center; justify-content:center; flex-shrink:0;"><img src="Thumbnail.png" alt="" style="width:27px; height:27px; border-radius:4px; object-fit:cover;"></div>
+                  <div><span style="display:block; font-size:14px; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Anthropic</span><span style="display:block; font-size:13px; line-height:20px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">https://www.anthropic.com</span></div>
+                </div>
+                <!-- Title + Snippet -->
+                <div style="display:flex; flex-direction:column; gap:4px; margin-bottom:16px;">
+                  <a href="#" style="font-size:24px; line-height:32px; font-weight:400; color:var(--smtc-foreground-content-link-default, #3d62db); text-decoration:none; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Anthropic — AI Research and Safety</a>
+                  <p style="margin:0; font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-tertiary); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">Anthropic is an AI safety company building reliable, interpretable, and steerable AI systems. Creators of Claude, a family of large language models.</p>
+                </div>
+                <!-- Deeplink Grid -->
+                <div style="display:flex; flex-direction:column;">
+                  <div style="display:flex; height:84px;">
+                    <a href="#" style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:4px; padding:0 16px; border-radius:8px; text-decoration:none; transition:background 0.15s;" onmouseover="this.style.background='var(--smtc-background-ctrl-subtle-hover)'" onmouseout="this.style.background='transparent'"><span style="font-size:16px; color:var(--smtc-foreground-content-link-default, #3d62db);">Claude</span><span style="font-size:13px; line-height:20px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">Meet Claude, our AI assistant for tasks of any size</span></a>
+                    <a href="#" style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:4px; padding:0 16px; border-radius:8px; text-decoration:none; transition:background 0.15s;" onmouseover="this.style.background='var(--smtc-background-ctrl-subtle-hover)'" onmouseout="this.style.background='transparent'"><span style="font-size:16px; color:var(--smtc-foreground-content-link-default, #3d62db);">Research</span><span style="font-size:13px; line-height:20px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">Frontier research on AI safety and interpretability</span></a>
+                  </div>
+                  <div style="display:flex; height:84px;">
+                    <a href="#" style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:4px; padding:0 16px; border-radius:8px; text-decoration:none; transition:background 0.15s;" onmouseover="this.style.background='var(--smtc-background-ctrl-subtle-hover)'" onmouseout="this.style.background='transparent'"><span style="font-size:16px; color:var(--smtc-foreground-content-link-default, #3d62db);">API</span><span style="font-size:13px; line-height:20px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">Build with Claude using the Anthropic API</span></a>
+                    <a href="#" style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:4px; padding:0 16px; border-radius:8px; text-decoration:none; transition:background 0.15s;" onmouseover="this.style.background='var(--smtc-background-ctrl-subtle-hover)'" onmouseout="this.style.background='transparent'"><span style="font-size:16px; color:var(--smtc-foreground-content-link-default, #3d62db);">Careers</span><span style="font-size:13px; line-height:20px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">Join us in building safe and beneficial AI</span></a>
+                  </div>
+                  <div style="display:flex; height:84px;">
+                    <a href="#" style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:4px; padding:0 16px; border-radius:8px; text-decoration:none; transition:background 0.15s;" onmouseover="this.style.background='var(--smtc-background-ctrl-subtle-hover)'" onmouseout="this.style.background='transparent'"><span style="font-size:16px; color:var(--smtc-foreground-content-link-default, #3d62db);">News</span><span style="font-size:13px; line-height:20px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">Latest announcements and updates from Anthropic</span></a>
+                    <a href="#" style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:4px; padding:0 16px; border-radius:8px; text-decoration:none; transition:background 0.15s;" onmouseover="this.style.background='var(--smtc-background-ctrl-subtle-hover)'" onmouseout="this.style.background='transparent'"><span style="font-size:16px; color:var(--smtc-foreground-content-link-default, #3d62db);">Company</span><span style="font-size:13px; line-height:20px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">About Anthropic, our mission and team</span></a>
+                  </div>
+                  <div style="display:flex; height:84px;">
+                    <a href="#" style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:4px; padding:0 16px; border-radius:8px; text-decoration:none; transition:background 0.15s;" onmouseover="this.style.background='var(--smtc-background-ctrl-subtle-hover)'" onmouseout="this.style.background='transparent'"><span style="font-size:16px; color:var(--smtc-foreground-content-link-default, #3d62db);">Claude Code</span><span style="font-size:13px; line-height:20px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">An agentic coding tool that lives in your terminal</span></a>
+                    <a href="#" style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:4px; padding:0 16px; border-radius:8px; text-decoration:none; transition:background 0.15s;" onmouseover="this.style.background='var(--smtc-background-ctrl-subtle-hover)'" onmouseout="this.style.background='transparent'"><span style="font-size:16px; color:var(--smtc-foreground-content-link-default, #3d62db);">Safety</span><span style="font-size:13px; line-height:20px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">Our Responsible Scaling Policy and safety approach</span></a>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Variant 2: Algo Standard ===== -->
+        <div class="size-group">
+          <h3 class="size-group__title">Variant 2 — Algo (Standard)</h3>
+          <div class="size-group__cards" style="flex-direction:column; gap:24px;">
+            <div class="card-showcase">
+              <span class="card-showcase__label">Standard Algo · Title + Snippet · 648px</span>
+              <article class="bing-card-hover" style="width:648px; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); padding:16px 20px;">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+                  <div style="width:28px; height:28px; border-radius:100px; background:var(--bing-smtc-background-ctrl-neutral-rest, #f5f5f5); border:1px solid var(--smtc-stroke-ctrl-default, rgba(0,0,0,0.1)); display:flex; align-items:center; justify-content:center; flex-shrink:0;"><img src="Thumbnail.png" alt="" style="width:18px; height:18px; border-radius:4px; object-fit:cover;"></div>
+                  <div><span style="display:block; font-size:14px; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8));">Anthropic</span><span style="display:block; font-size:13px; line-height:20px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">https://www.anthropic.com/research</span></div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:4px;">
+                  <a href="#" style="font-size:20px; line-height:26px; font-weight:400; color:var(--smtc-foreground-content-link-default, #4007a2); text-decoration:none; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:block;">Constitutional AI: Harmlessness from AI Feedback — Anthropic</a>
+                  <p style="margin:0; font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-tertiary, rgba(0,0,0,0.6)); display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">We experiment with methods for training a harmless AI assistant without human feedback labels for harms. We first use a set of principles to guide the model's behavior, then use the AI's own outputs to refine its responses through self-critique.</p>
+                </div>
+              </article>
+            </div>
+            <div class="card-showcase">
+              <span class="card-showcase__label">Standard Algo · With Date Badge · 648px</span>
+              <article class="bing-card-hover" style="width:648px; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); padding:16px 20px;">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+                  <div style="width:28px; height:28px; border-radius:100px; background:var(--bing-smtc-background-ctrl-neutral-rest, #f5f5f5); border:1px solid var(--smtc-stroke-ctrl-default, rgba(0,0,0,0.1)); display:flex; align-items:center; justify-content:center; flex-shrink:0;"><img src="Thumbnail.png" alt="" style="width:18px; height:18px; border-radius:4px; object-fit:cover;"></div>
+                  <div><span style="display:block; font-size:14px; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8));">Wikipedia</span><span style="display:block; font-size:13px; line-height:20px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">https://en.wikipedia.org/wiki/Anthropic</span></div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:4px;">
+                  <a href="#" style="font-size:20px; line-height:26px; font-weight:400; color:var(--smtc-foreground-content-link-default, #4007a2); text-decoration:none; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:block;">Anthropic — Wikipedia</a>
+                  <div style="display:flex; align-items:center; gap:4px; margin-bottom:2px;">
+                    <span style="display:flex; align-items:center; height:18px; padding:2px 4px; border-radius:var(--smtc-corner-ctrl-sm-rest, 4px); background:var(--bing-smtc-background-ctrl-neutral-rest, #f5f5f5); font-size:11px; line-height:13px; color:var(--bing-smtc-foreground-content-neutral-tertiary, rgba(0,0,0,0.6));">Web</span>
+                    <span style="font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-tertiary, rgba(0,0,0,0.6));">Mar 15, 2025 ·</span>
+                  </div>
+                  <p style="margin:0; font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-tertiary, rgba(0,0,0,0.6)); display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">Anthropic is an American artificial intelligence startup founded in 2021 by siblings Dario and Daniela Amodei, both former members of OpenAI. The company focuses on AI safety research and develops Claude, a large language model.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Variant 3: Algo Image Caption / Single ===== -->
+        <div class="size-group">
+          <h3 class="size-group__title">Variant 3 — Algo Image Caption / Single</h3>
+          <div class="size-group__cards" style="flex-direction:column; gap:24px;">
+            <div class="card-showcase">
+              <span class="card-showcase__label">Image Caption Single · 108×108 Right Image · 648px</span>
+              <article class="bing-card-hover" style="width:648px; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); display:flex; align-items:flex-end; gap:20px; padding:16px 20px;">
+                <div style="flex:1; min-width:0;">
+                  <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+                    <div style="width:28px; height:28px; border-radius:100px; background:var(--bing-smtc-background-ctrl-neutral-rest, #f5f5f5); border:1px solid var(--smtc-stroke-ctrl-default, rgba(0,0,0,0.1)); display:flex; align-items:center; justify-content:center; flex-shrink:0;"><img src="Thumbnail.png" alt="" style="width:18px; height:18px; border-radius:4px; object-fit:cover;"></div>
+                    <div><span style="display:block; font-size:14px; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8));">TechCrunch</span><span style="display:block; font-size:13px; line-height:20px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">https://techcrunch.com/anthropic</span></div>
+                  </div>
+                  <div style="display:flex; flex-direction:column; gap:4px;">
+                    <a href="#" style="font-size:20px; line-height:26px; font-weight:400; color:var(--smtc-foreground-content-link-default, #4007a2); text-decoration:none; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:block;">Anthropic's Claude 3.5 Sonnet sets new benchmarks across all categories</a>
+                    <p style="margin:0; font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-tertiary, rgba(0,0,0,0.6)); display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">Claude 3.5 Sonnet has outperformed all other models on standard benchmarks for coding, reasoning, and writing tasks. The model demonstrates significant improvements in long-context understanding.</p>
+                  </div>
+                </div>
+                <img src="Thumbnail.png" alt="" style="width:108px; height:108px; border-radius:var(--smtc-corner-card-rest, 16px); object-fit:cover; flex-shrink:0;">
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Variant 4: Algo Image Caption / Multiple ===== -->
+        <div class="size-group">
+          <h3 class="size-group__title">Variant 4 — Algo Image Caption / Multiple</h3>
+          <div class="size-group__cards" style="flex-direction:column; gap:24px;">
+            <div class="card-showcase">
+              <span class="card-showcase__label">Image Caption Multiple · 190×108 Mosaic · 648px</span>
+              <article class="bing-card-hover" style="width:648px; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); display:flex; align-items:flex-end; gap:20px; padding:16px 20px;">
+                <div style="flex:1; min-width:0;">
+                  <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+                    <div style="width:28px; height:28px; border-radius:100px; background:var(--bing-smtc-background-ctrl-neutral-rest, #f5f5f5); border:1px solid var(--smtc-stroke-ctrl-default, rgba(0,0,0,0.1)); display:flex; align-items:center; justify-content:center; flex-shrink:0;"><img src="Thumbnail.png" alt="" style="width:18px; height:18px; border-radius:4px; object-fit:cover;"></div>
+                    <div><span style="display:block; font-size:14px; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8));">The Verge</span><span style="display:block; font-size:13px; line-height:20px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">https://theverge.com/ai/anthropic</span></div>
+                  </div>
+                  <div style="display:flex; flex-direction:column; gap:4px;">
+                    <a href="#" style="font-size:20px; line-height:26px; font-weight:400; color:var(--smtc-foreground-content-link-default, #4007a2); text-decoration:none; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:block;">Anthropic's new research facility brings AI safety to the forefront</a>
+                    <p style="margin:0; font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-tertiary, rgba(0,0,0,0.6)); display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">The San Francisco-based AI company has expanded its research capabilities with a new interpretability lab, focusing on understanding how large language models form internal representations.</p>
+                  </div>
+                </div>
+                <!-- Image Mosaic -->
+                <div style="width:190px; height:108px; border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; display:flex; gap:1px; flex-shrink:0;">
+                  <img src="Thumbnail.png" alt="" style="flex:1; height:100%; object-fit:cover;">
+                  <div style="flex:1; display:flex; flex-direction:column; gap:1px;">
+                    <img src="Thumbnail.png" alt="" style="flex:1; width:100%; object-fit:cover;">
+                    <img src="Thumbnail.png" alt="" style="flex:1; width:100%; object-fit:cover;">
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Variant 5: Algo Video Caption ===== -->
+        <div class="size-group">
+          <h3 class="size-group__title">Variant 5 — Algo Video Caption</h3>
+          <div class="size-group__cards" style="flex-direction:column; gap:24px;">
+            <div class="card-showcase">
+              <span class="card-showcase__label">Video Caption · 229×130 Thumbnail + Facts · 648px</span>
+              <article class="bing-card-hover" style="width:648px; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); padding:16px 20px;">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+                  <div style="width:28px; height:28px; border-radius:100px; background:var(--bing-smtc-background-ctrl-neutral-rest, #f5f5f5); border:1px solid var(--smtc-stroke-ctrl-default, rgba(0,0,0,0.1)); display:flex; align-items:center; justify-content:center; flex-shrink:0;"><img src="Thumbnail.png" alt="" style="width:18px; height:18px; border-radius:4px; object-fit:cover;"></div>
+                  <div><span style="display:block; font-size:14px; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8));">YouTube</span><span style="display:block; font-size:13px; line-height:20px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">https://www.youtube.com/watch?v=...</span></div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:4px; margin-bottom:12px;">
+                  <a href="#" style="font-size:20px; line-height:26px; font-weight:400; color:var(--smtc-foreground-content-link-default, #4007a2); text-decoration:none; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:block;">Claude 3.5 Sonnet: Live Coding Demo — Building a Full-Stack App in Minutes</a>
+                </div>
+                <!-- Video + Snippet row -->
+                <div style="display:flex; align-items:center; gap:20px;">
+                  <!-- Video Thumbnail -->
+                  <div style="width:229px; height:130px; border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; position:relative; flex-shrink:0;">
+                    <img src="Thumbnail.png" alt="" style="width:100%; height:100%; object-fit:cover;">
+                    <span style="position:absolute; top:8px; left:8px; backdrop-filter:blur(6px); background:rgba(0,0,0,0.55); padding:2px 4px; border-radius:4px; font-size:11px; font-weight:700; line-height:16px; color:#fff;">12:34</span>
+                    <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); backdrop-filter:blur(6px); background:rgba(0,0,0,0.45); border-radius:999px; padding:8px; display:flex; align-items:center; justify-content:center;"><svg width="16" height="16" viewBox="0 0 16 16" fill="white"><path d="M5 3.5v9l7-4.5L5 3.5z"/></svg></div>
+                  </div>
+                  <!-- Snippet + Facts -->
+                  <div style="flex:1; display:flex; flex-direction:column; gap:8px;">
+                    <p style="margin:0; font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-tertiary, rgba(0,0,0,0.6)); display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">Watch as Claude 3.5 Sonnet builds a complete full-stack application from scratch, demonstrating its coding capabilities in real-time.</p>
+                    <div style="display:flex; gap:16px; height:22px;">
+                      <span><span style="font-size:14px; font-weight:700; color:var(--bing-smtc-foreground-content-neutral-tertiary, rgba(0,0,0,0.6));">Author:</span> <span style="font-size:14px; color:var(--bing-smtc-foreground-content-neutral-tertiary, rgba(0,0,0,0.6));">Anthropic</span></span>
+                      <span><span style="font-size:14px; font-weight:700; color:var(--bing-smtc-foreground-content-neutral-tertiary, rgba(0,0,0,0.6));">Views:</span> <span style="font-size:14px; color:var(--bing-smtc-foreground-content-neutral-tertiary, rgba(0,0,0,0.6));">2.1M</span></span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Variant 6: Algo Rich Caption ===== -->
+        <div class="size-group">
+          <h3 class="size-group__title">Variant 6 — Algo Rich Caption</h3>
+          <div class="size-group__cards" style="flex-direction:column; gap:24px;">
+            <div class="card-showcase">
+              <span class="card-showcase__label">Rich Caption · Text Sub-cards · 648px</span>
+              <article class="bing-card-hover" style="width:648px; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); padding:16px 20px;">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+                  <div style="width:28px; height:28px; border-radius:100px; background:var(--bing-smtc-background-ctrl-neutral-rest, #f5f5f5); border:1px solid var(--smtc-stroke-ctrl-default, rgba(0,0,0,0.1)); display:flex; align-items:center; justify-content:center; flex-shrink:0;"><img src="Thumbnail.png" alt="" style="width:18px; height:18px; border-radius:4px; object-fit:cover;"></div>
+                  <div><span style="display:block; font-size:14px; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8));">Anthropic</span><span style="display:block; font-size:13px; line-height:20px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">https://www.anthropic.com/research</span></div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:4px; margin-bottom:16px;">
+                  <a href="#" style="font-size:20px; line-height:26px; font-weight:400; color:var(--smtc-foreground-content-link-default, #4007a2); text-decoration:none; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:block;">Research — Anthropic</a>
+                  <p style="margin:0; font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-tertiary, rgba(0,0,0,0.6)); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">Our research focuses on the safety, alignment, and interpretability of AI systems. Browse our latest publications and findings below.</p>
+                </div>
+                <!-- Article Cards (Text variant) -->
+                <div style="display:flex; gap:24px;">
+                  <div class="bing-card-hover" style="width:200px; height:200px; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); padding:20px; display:flex; flex-direction:column; gap:8px; overflow:hidden;">
+                    <h4 style="margin:0; font-size:14px; font-weight:700; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8));">Constitutional AI</h4>
+                    <p style="margin:0; font-size:14px; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8)); flex:1; overflow:hidden;">A technique for training harmless AI assistants without human labels for harms.</p>
+                    <div style="display:flex; gap:4px; align-items:center;"><img src="Thumbnail.png" alt="" style="width:16px; height:16px; border-radius:4px; object-fit:cover;"><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">Anthropic</span><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">·</span><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">anthropic.com</span></div>
+                  </div>
+                  <div class="bing-card-hover" style="width:200px; height:200px; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); padding:20px; display:flex; flex-direction:column; gap:8px; overflow:hidden;">
+                    <h4 style="margin:0; font-size:14px; font-weight:700; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8));">Interpretability</h4>
+                    <p style="margin:0; font-size:14px; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8)); flex:1; overflow:hidden;">Understanding how neural networks form internal representations and features.</p>
+                    <div style="display:flex; gap:4px; align-items:center;"><img src="Thumbnail.png" alt="" style="width:16px; height:16px; border-radius:4px; object-fit:cover;"><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">Anthropic</span><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">·</span><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">anthropic.com</span></div>
+                  </div>
+                  <div class="bing-card-hover" style="width:200px; height:200px; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); padding:20px; display:flex; flex-direction:column; gap:8px; overflow:hidden;">
+                    <h4 style="margin:0; font-size:14px; font-weight:700; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8));">Scaling Policy</h4>
+                    <p style="margin:0; font-size:14px; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8)); flex:1; overflow:hidden;">Our Responsible Scaling Policy for safe and gradual AI capability development.</p>
+                    <div style="display:flex; gap:4px; align-items:center;"><img src="Thumbnail.png" alt="" style="width:16px; height:16px; border-radius:4px; object-fit:cover;"><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">Anthropic</span><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">·</span><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">anthropic.com</span></div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="card-showcase">
+              <span class="card-showcase__label">Rich Caption · Image Sub-cards · 648px</span>
+              <article class="bing-card-hover" style="width:648px; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); padding:16px 20px;">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+                  <div style="width:28px; height:28px; border-radius:100px; background:var(--bing-smtc-background-ctrl-neutral-rest, #f5f5f5); border:1px solid var(--smtc-stroke-ctrl-default, rgba(0,0,0,0.1)); display:flex; align-items:center; justify-content:center; flex-shrink:0;"><img src="Thumbnail.png" alt="" style="width:18px; height:18px; border-radius:4px; object-fit:cover;"></div>
+                  <div><span style="display:block; font-size:14px; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8));">Anthropic Blog</span><span style="display:block; font-size:13px; line-height:20px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">https://www.anthropic.com/news</span></div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:4px; margin-bottom:16px;">
+                  <a href="#" style="font-size:20px; line-height:26px; font-weight:400; color:var(--smtc-foreground-content-link-default, #4007a2); text-decoration:none; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:block;">News — Anthropic</a>
+                  <p style="margin:0; font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-tertiary, rgba(0,0,0,0.6));">Latest announcements, product updates, and company news from Anthropic.</p>
+                </div>
+                <!-- Article Cards (Image variant) -->
+                <div style="display:flex; gap:24px;">
+                  <div class="bing-card-hover" style="width:200px; height:200px; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; display:flex; flex-direction:column;">
+                    <img src="Thumbnail.png" alt="" style="width:200px; height:82px; object-fit:cover;">
+                    <div style="padding:8px 20px 20px; display:flex; flex-direction:column; gap:8px; flex:1;">
+                      <h4 style="margin:0; font-size:14px; font-weight:700; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8)); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">Introducing Claude 3.5 Sonnet</h4>
+                      <div style="display:flex; gap:4px; align-items:center; margin-top:auto;"><img src="Thumbnail.png" alt="" style="width:16px; height:16px; border-radius:4px;"><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">anthropic.com</span></div>
+                    </div>
+                  </div>
+                  <div class="bing-card-hover" style="width:200px; height:200px; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; display:flex; flex-direction:column;">
+                    <img src="Thumbnail.png" alt="" style="width:200px; height:82px; object-fit:cover;">
+                    <div style="padding:8px 20px 20px; display:flex; flex-direction:column; gap:8px; flex:1;">
+                      <h4 style="margin:0; font-size:14px; font-weight:700; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8)); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">Claude Code: An AI Agent in Your Terminal</h4>
+                      <div style="display:flex; gap:4px; align-items:center; margin-top:auto;"><img src="Thumbnail.png" alt="" style="width:16px; height:16px; border-radius:4px;"><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">anthropic.com</span></div>
+                    </div>
+                  </div>
+                  <div class="bing-card-hover" style="width:200px; height:200px; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden; display:flex; flex-direction:column;">
+                    <img src="Thumbnail.png" alt="" style="width:200px; height:82px; object-fit:cover;">
+                    <div style="padding:8px 20px 20px; display:flex; flex-direction:column; gap:8px; flex:1;">
+                      <h4 style="margin:0; font-size:14px; font-weight:700; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8)); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">Anthropic Raises $2B in Series D</h4>
+                      <div style="display:flex; gap:4px; align-items:center; margin-top:auto;"><img src="Thumbnail.png" alt="" style="width:16px; height:16px; border-radius:4px;"><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">anthropic.com</span></div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Variant 7: Algo Tab View ===== -->
+        <div class="size-group">
+          <h3 class="size-group__title">Variant 7 — Algo Tab View</h3>
+          <div class="size-group__cards" style="flex-direction:column; gap:24px;">
+            <div class="card-showcase">
+              <span class="card-showcase__label">Tab View · Wikipedia-style · 648px</span>
+              <article class="bing-card-hover" style="width:648px; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); padding:16px 20px;">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+                  <div style="width:28px; height:28px; border-radius:100px; background:var(--bing-smtc-background-ctrl-neutral-rest, #f5f5f5); border:1px solid var(--smtc-stroke-ctrl-default, rgba(0,0,0,0.1)); display:flex; align-items:center; justify-content:center; flex-shrink:0;"><img src="Thumbnail.png" alt="" style="width:18px; height:18px; border-radius:4px; object-fit:cover;"></div>
+                  <div><span style="display:block; font-size:14px; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8));">Wikipedia</span><span style="display:block; font-size:13px; line-height:20px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">https://en.wikipedia.org/wiki/Anthropic</span></div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:4px; margin-bottom:12px;">
+                  <a href="#" style="font-size:20px; line-height:26px; font-weight:400; color:var(--smtc-foreground-content-link-default, #4007a2); text-decoration:none; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:block;">Anthropic — Wikipedia</a>
+                </div>
+                <!-- Tab Row -->
+                <div style="display:flex; gap:4px; margin-bottom:12px; overflow:hidden; position:relative;">
+                  <span style="padding:8px 16px; border-radius:8px; background:var(--smtc-background-card-on-primary-alt-rest, #d7d7d7); font-size:13px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary, black); white-space:nowrap; cursor:pointer;">Overview</span>
+                  <span style="padding:8px 16px; border-radius:8px; background:transparent; font-size:13px; font-weight:700; color:var(--bing-smtc-foreground-content-neutral-secondary-alt, rgba(0,0,0,0.75)); white-space:nowrap; cursor:pointer;">History</span>
+                  <span style="padding:8px 16px; border-radius:8px; background:transparent; font-size:13px; font-weight:700; color:var(--bing-smtc-foreground-content-neutral-secondary-alt, rgba(0,0,0,0.75)); white-space:nowrap; cursor:pointer;">Products</span>
+                  <span style="padding:8px 16px; border-radius:8px; background:transparent; font-size:13px; font-weight:700; color:var(--bing-smtc-foreground-content-neutral-secondary-alt, rgba(0,0,0,0.75)); white-space:nowrap; cursor:pointer;">Research</span>
+                  <span style="padding:8px 16px; border-radius:8px; background:transparent; font-size:13px; font-weight:700; color:var(--bing-smtc-foreground-content-neutral-secondary-alt, rgba(0,0,0,0.75)); white-space:nowrap; cursor:pointer;">Funding</span>
+                  <span style="padding:8px 16px; border-radius:8px; background:transparent; font-size:13px; font-weight:700; color:var(--bing-smtc-foreground-content-neutral-secondary-alt, rgba(0,0,0,0.75)); white-space:nowrap; cursor:pointer;">See all</span>
+                  <div style="position:absolute; right:0; top:0; bottom:0; width:32px; height:32px; background:var(--smtc-background-card-on-primary-default-rest, white); box-shadow:-4px 0 8px var(--smtc-stroke-ctrl-default, rgba(0,0,0,0.1)); border-radius:8px; display:flex; align-items:center; justify-content:center; cursor:pointer; align-self:center;"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></div>
+                </div>
+                <!-- Content with Image -->
+                <div style="display:flex; gap:20px;">
+                  <div style="flex:1;">
+                    <p style="margin:0; font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-secondary-alt, rgba(0,0,0,0.75)); display:-webkit-box; -webkit-line-clamp:5; -webkit-box-orient:vertical; overflow:hidden;">Anthropic is an American artificial intelligence company founded in 2021 by siblings Dario Amodei and Daniela Amodei, both former members of OpenAI. The company focuses on AI safety research and develops large language models. Its primary product is Claude, a family of AI assistants. Anthropic has raised over $7 billion in funding and is headquartered in San Francisco, California.</p>
+                    <a href="#" style="display:flex; align-items:center; gap:4px; margin-top:8px; font-size:16px; color:var(--bing-smtc-foreground-content-brand-rest, #202020); text-decoration:none; font-weight:400;">Continue reading <svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
+                  </div>
+                  <img src="Thumbnail.png" alt="" style="width:108px; height:108px; border-radius:var(--smtc-corner-card-rest, 16px); object-fit:cover; flex-shrink:0;">
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Variant 8: Go-big Answer ===== -->
+        <div class="size-group">
+          <h3 class="size-group__title">Variant 8 — Go-big Answer</h3>
+          <div class="size-group__cards" style="flex-direction:column; gap:24px;">
+            <div class="card-showcase">
+              <span class="card-showcase__label">Go-big Large · 4 Content Cards (2×2 grid) · 648px</span>
+              <article class="bing-card-hover" style="width:648px; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); padding:16px 20px;">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+                  <div style="width:28px; height:28px; border-radius:100px; background:var(--bing-smtc-background-ctrl-neutral-rest, #f5f5f5); border:1px solid var(--smtc-stroke-ctrl-default, rgba(0,0,0,0.1)); display:flex; align-items:center; justify-content:center; flex-shrink:0;"><img src="Thumbnail.png" alt="" style="width:18px; height:18px; border-radius:4px; object-fit:cover;"></div>
+                  <div><span style="display:block; font-size:14px; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8));">Anthropic</span><span style="display:block; font-size:13px; line-height:20px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">https://www.anthropic.com</span></div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:4px; margin-bottom:16px;">
+                  <a href="#" style="font-size:20px; line-height:26px; font-weight:400; color:var(--smtc-foreground-content-link-default, #4007a2); text-decoration:none; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:block;">Anthropic — AI Research and Products</a>
+                  <p style="margin:0; font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-tertiary, rgba(0,0,0,0.6)); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">Explore Anthropic's AI research, products, and company information. Home of Claude, the AI assistant.</p>
+                </div>
+                <!-- Content Cards 2×2 Grid -->
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:16px;">
+                  <div class="bing-card-hover" style="width:312px; height:200px; background:var(--bing-smtc-background-card-on-primary-alt-rest, #f5f5f5); border-radius:var(--smtc-corner-card-rest, 16px); padding:20px; display:flex; flex-direction:column; gap:8px; overflow:hidden;">
+                    <div style="display:flex; align-items:center; gap:8px; height:24px;"><svg width="16" height="16" viewBox="0 0 16 16" fill="var(--bing-smtc-foreground-content-neutral-tertiary)"><path d="M8 1a7 7 0 107 7A7 7 0 008 1zm0 12a5 5 0 115-5 5 5 0 01-5 5z"/></svg><span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8));">Claude</span></div>
+                    <p style="margin:0; font-size:13px; line-height:20px; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8)); flex:1; overflow:hidden;">Claude is a family of AI assistants created by Anthropic. It can help with writing, analysis, coding, math, and more. Designed to be helpful, harmless, and honest.</p>
+                  </div>
+                  <div class="bing-card-hover" style="width:312px; height:200px; background:var(--bing-smtc-background-card-on-primary-alt-rest, #f5f5f5); border-radius:var(--smtc-corner-card-rest, 16px); padding:20px; display:flex; flex-direction:column; gap:8px; overflow:hidden;">
+                    <div style="display:flex; align-items:center; gap:8px; height:24px;"><svg width="16" height="16" viewBox="0 0 16 16" fill="var(--bing-smtc-foreground-content-neutral-tertiary)"><path d="M2 3h12v2H2zm0 4h12v2H2zm0 4h8v2H2z"/></svg><span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8));">Research</span></div>
+                    <p style="margin:0; font-size:13px; line-height:20px; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8)); flex:1; overflow:hidden;">Our research focuses on AI safety, alignment, and interpretability. We develop techniques like Constitutional AI to make models both capable and safe.</p>
+                  </div>
+                  <div class="bing-card-hover" style="width:312px; height:200px; border-radius:var(--smtc-corner-card-rest, 16px); overflow:hidden;"><img src="Thumbnail.png" alt="" style="width:100%; height:100%; object-fit:cover;"></div>
+                  <div class="bing-card-hover" style="width:312px; height:200px; background:var(--bing-smtc-background-card-on-primary-alt-rest, #f5f5f5); border-radius:var(--smtc-corner-card-rest, 16px); padding:20px; display:flex; flex-direction:column; gap:8px; overflow:hidden;">
+                    <div style="display:flex; align-items:center; gap:8px; height:24px;"><svg width="16" height="16" viewBox="0 0 16 16" fill="var(--bing-smtc-foreground-content-neutral-tertiary)"><path d="M8 1l2 4 4.5.5-3.25 3L12.5 13 8 10.5 3.5 13l1.25-4.5L1.5 5.5 6 5z"/></svg><span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8));">Careers</span></div>
+                    <p style="margin:0; font-size:13px; line-height:20px; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8)); flex:1; overflow:hidden;">Join us in building safe and beneficial AI systems. We're hiring researchers, engineers, and policy experts across multiple disciplines.</p>
+                  </div>
+                </div>
+                <!-- Footer: See all pill -->
+                <div style="display:flex; align-items:center; gap:12px;">
+                  <div style="flex:1; height:1px; background:var(--smtc-stroke-divider-default, rgba(0,0,0,0.08));"></div>
+                  <a href="#" style="display:flex; align-items:center; gap:4px; padding:8px 12px; background:var(--bing-smtc-background-ctrl-neutral-rest, #d7d7d7); border-radius:9999px; font-size:13px; font-weight:700; color:var(--bing-smtc-foreground-content-brand-rest, #202020); text-decoration:none; white-space:nowrap;">See all on Anthropic <svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
+                  <div style="flex:1; height:1px; background:var(--smtc-stroke-divider-default, rgba(0,0,0,0.08));"></div>
+                </div>
+                <!-- License + Feedback -->
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-top:8px;">
+                  <span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary, rgba(0,0,0,0.6));">Content from anthropic.com</span>
+                  <div style="display:flex; align-items:center; gap:4px;">
+                    <span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary, rgba(0,0,0,0.6));">Feedback</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" style="cursor:pointer; fill:var(--bing-smtc-foreground-content-neutral-tertiary, rgba(0,0,0,0.4));"><path d="M4 8h8M8 4v8" fill="none" style="stroke:var(--bing-smtc-foreground-content-neutral-tertiary, rgba(0,0,0,0.4));" stroke-width="1"/></svg>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="card-showcase">
+              <span class="card-showcase__label">Go-big Small · 2 Content Cards (1 row) · 648px</span>
+              <article class="bing-card-hover" style="width:648px; background:var(--smtc-background-card-on-primary-alt-rest); border-radius:var(--smtc-corner-card-rest, 16px); padding:16px 20px;">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+                  <div style="width:28px; height:28px; border-radius:100px; background:var(--bing-smtc-background-ctrl-neutral-rest, #f5f5f5); border:1px solid var(--smtc-stroke-ctrl-default, rgba(0,0,0,0.1)); display:flex; align-items:center; justify-content:center; flex-shrink:0;"><img src="Thumbnail.png" alt="" style="width:18px; height:18px; border-radius:4px; object-fit:cover;"></div>
+                  <div><span style="display:block; font-size:14px; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8));">Anthropic Docs</span><span style="display:block; font-size:13px; line-height:20px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">https://docs.anthropic.com</span></div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:4px; margin-bottom:16px;">
+                  <a href="#" style="font-size:20px; line-height:26px; font-weight:400; color:var(--smtc-foreground-content-link-default, #4007a2); text-decoration:none; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:block;">Anthropic Developer Documentation</a>
+                  <p style="margin:0; font-size:14px; line-height:22px; color:var(--bing-smtc-foreground-content-neutral-tertiary, rgba(0,0,0,0.6)); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">Complete API reference, guides, and tutorials for building with Claude. Get started with the Anthropic API.</p>
+                </div>
+                <!-- Content Cards 1 row -->
+                <div style="display:flex; gap:24px; margin-bottom:16px;">
+                  <div class="bing-card-hover" style="width:312px; height:200px; background:var(--bing-smtc-background-card-on-primary-alt-rest, #f5f5f5); border-radius:var(--smtc-corner-card-rest, 16px); padding:20px; display:flex; flex-direction:column; gap:8px; overflow:hidden;">
+                    <div style="display:flex; align-items:center; gap:8px; height:24px;"><svg width="16" height="16" viewBox="0 0 16 16" fill="var(--bing-smtc-foreground-content-neutral-tertiary)"><path d="M3 2h10l1 4H2zM2 8h12v6H2z"/></svg><span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8));">API Reference</span></div>
+                    <p style="margin:0; font-size:13px; line-height:20px; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8)); flex:1; overflow:hidden;">Complete API documentation for all Claude models. Authentication, messages, streaming, tool use, and more.</p>
+                  </div>
+                  <div class="bing-card-hover" style="width:312px; height:200px; background:var(--bing-smtc-background-card-on-primary-alt-rest, #f5f5f5); border-radius:var(--smtc-corner-card-rest, 16px); padding:20px; display:flex; flex-direction:column; gap:8px; overflow:hidden;">
+                    <div style="display:flex; align-items:center; gap:8px; height:24px;"><svg width="16" height="16" viewBox="0 0 16 16" fill="var(--bing-smtc-foreground-content-neutral-tertiary)"><path d="M2 2h5v5H2zm7 0h5v5H9zM2 9h5v5H2zm7 0h5v5H9z"/></svg><span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8));">Quick Start</span></div>
+                    <p style="margin:0; font-size:13px; line-height:20px; color:var(--smtc-foreground-content-neutral-secondary, rgba(0,0,0,0.8)); flex:1; overflow:hidden;">Get up and running with the Anthropic API in minutes. SDKs available for Python, TypeScript, and more.</p>
+                  </div>
+                </div>
+                <!-- Footer -->
+                <div style="display:flex; align-items:center; gap:12px;">
+                  <div style="flex:1; height:1px; background:var(--smtc-stroke-divider-default, rgba(0,0,0,0.08));"></div>
+                  <a href="#" style="display:flex; align-items:center; gap:4px; padding:8px 12px; background:var(--bing-smtc-background-ctrl-neutral-rest, #d7d7d7); border-radius:9999px; font-size:13px; font-weight:700; color:var(--bing-smtc-foreground-content-brand-rest, #202020); text-decoration:none; white-space:nowrap;">See all on Anthropic Docs <svg width="16" height="16" viewBox="0 0 16 16"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
+                  <div style="flex:1; height:1px; background:var(--smtc-stroke-divider-default, rgba(0,0,0,0.08));"></div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </div><!-- /tab-panels -->
   </main>
 
@@ -2690,7 +3577,7 @@
     // ---- Theme Switching ----
     const themeRadios = document.querySelectorAll('input[name="theme"]');
     const darkToggle = document.getElementById('darkToggle');
-    let currentTheme = '';
+    let currentTheme = 'stone';
     let isDark = false;
 
     function applyTheme() {
