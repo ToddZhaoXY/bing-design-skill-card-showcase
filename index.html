@@ -369,6 +369,7 @@
       font-weight: var(--bing-smtc-text-global-subtitle2-strong-fontWeight, 700);
       line-height: var(--bing-smtc-text-global-subtitle2-strong-lineHeight, 22px);
       color: var(--smtc-foreground-content-neutral-primary, black);
+      transition: color 0.2s;
     }
 
     .sidebar__section-title {
@@ -379,6 +380,7 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
       margin-bottom: 8px;
+      transition: color 0.2s;
     }
 
     .sidebar__group {
@@ -405,6 +407,10 @@
 
     .sidebar__radio-label input[type="radio"] {
       accent-color: var(--smtc-background-ctrl-brand-rest, #0078d4);
+    }
+    .sidebar__radio-label input[type="radio"]:focus-visible {
+      outline: 2px solid var(--smtc-foreground-content-brand-primary, #0078d4);
+      outline-offset: 2px;
     }
 
     .sidebar__toggle-row {
@@ -452,6 +458,10 @@
     .toggle-switch input:checked + .slider {
       background: var(--smtc-background-ctrl-brand-rest, #0078d4);
     }
+    .toggle-switch input:focus-visible + .slider {
+      outline: 2px solid var(--smtc-foreground-content-brand-primary, #0078d4);
+      outline-offset: 2px;
+    }
     .toggle-switch input:checked + .slider::before {
       transform: translateX(18px);
     }
@@ -459,13 +469,18 @@
     .sidebar__divider {
       height: 1px;
       background: var(--smtc-stroke-divider-default, rgba(0,0,0,0.08));
+      transition: background 0.2s;
     }
 
     .sidebar__stats {
       margin-top: auto;
-      font-size: var(--bing-smtc-text-global-caption2-fontSize, 11px);
+      font-size: var(--bing-smtc-text-global-caption1-fontSize, 13px);
       color: var(--bing-smtc-foreground-content-neutral-tertiary, rgba(0,0,0,0.6));
-      line-height: 1.5;
+      line-height: var(--bing-smtc-text-global-caption1-lineHeight, 20px);
+      padding: 12px 8px;
+      background: var(--smtc-background-ctrl-subtle-rest, rgba(0,0,0,0.03));
+      border-radius: var(--smtc-corner-ctrl-rest, 8px);
+      transition: color 0.2s, background 0.2s;
     }
 
     /* ---- Main Content ---- */
@@ -487,11 +502,13 @@
       font-size: var(--bing-smtc-text-global-title2-strong-fontSize, 24px);
       font-weight: var(--bing-smtc-text-global-title2-strong-fontWeight, 700);
       line-height: var(--bing-smtc-text-global-title2-strong-lineHeight, 32px);
+      transition: color 0.2s;
     }
 
     .main__subtitle {
       font-size: var(--bing-smtc-text-global-body3-fontSize, 14px);
       color: var(--bing-smtc-foreground-content-neutral-tertiary, rgba(0,0,0,0.6));
+      transition: color 0.2s;
     }
 
     /* ---- Tabs ---- */
@@ -513,6 +530,7 @@
       scrollbar-width: none;
       -ms-overflow-style: none;
       padding-bottom: 12px;
+      scroll-behavior: smooth;
     }
     .bing-tabs-list::-webkit-scrollbar { display: none; }
 
@@ -539,6 +557,7 @@
       color: var(--bing-smtc-foreground-ctrl-neutral-primary-rest, rgba(0,0,0,0.6));
       text-align: center;
       white-space: nowrap;
+      transition: color 0.15s;
     }
 
     .bing-tab__indicator {
@@ -558,11 +577,19 @@
       border-radius: var(--smtc-corner-circular, 9999px);
     }
 
+    .bing-tab {
+      transition: background 0.15s, box-shadow 0.15s;
+    }
     .bing-tab:hover {
       background: var(--smtc-background-ctrl-subtle-hover, rgba(0,0,0,0.06));
     }
     .bing-tab:hover .bing-tab__label {
       color: var(--smtc-foreground-ctrl-on-subtle-hover, #191919);
+    }
+    .bing-tab:focus-visible {
+      outline: 2px solid var(--smtc-foreground-content-brand-primary, #0078d4);
+      outline-offset: -2px;
+      border-radius: var(--smtc-corner-ctrl-rest, 8px);
     }
 
     .bing-tab--selected {
@@ -583,6 +610,7 @@
       padding: 1px 5px;
       border-radius: var(--smtc-corner-circular, 9999px);
       margin-left: 4px;
+      transition: background 0.2s, color 0.2s;
     }
 
     /* ---- Tab Panels ---- */
@@ -599,6 +627,11 @@
       display: block;
       padding: 32px;
       overflow-x: auto;
+      animation: fadeIn 0.2s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* ---- Algo panel: white card backgrounds (not themed warm-gray) ---- */
@@ -617,6 +650,7 @@
       margin-bottom: 16px;
       padding-bottom: 8px;
       border-bottom: 1px solid var(--smtc-stroke-divider-default, rgba(0,0,0,0.08));
+      transition: color 0.2s, border-color 0.2s;
     }
     .size-group__cards {
       display: flex;
@@ -640,6 +674,8 @@
       padding: 4px 8px;
       border-radius: var(--smtc-corner-ctrl-sm-rest, 4px);
       align-self: flex-start;
+      transition: color 0.2s, background 0.2s;
+      letter-spacing: 0.2px;
     }
 
     /* ===== SHARED VIDEO CARD STYLES ===== */
@@ -747,9 +783,6 @@
       fill: var(--smtc-foreground-content-neutral-primary, black);
     }
 
-    /* SVG Play icon inline */
-    .play-svg { display: none; }
-
     /* Chevron right SVG */
     .chevron-svg {
       width: 20px;
@@ -759,11 +792,16 @@
 
     /* Generic card hover effect */
     .bing-card-hover {
-      transition: box-shadow 0.2s;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
       cursor: pointer;
     }
     .bing-card-hover:hover {
       box-shadow: var(--bing-smtc-shadow-card-hover-1, 0 1px 2px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.05));
+      transform: translateY(-1px);
+    }
+    .bing-card-hover:active {
+      transform: translateY(0);
+      transition-duration: 0.1s;
     }
 
     /* Placeholder text for panels not yet built */
@@ -787,7 +825,10 @@
 
   <!-- ===== SIDEBAR ===== -->
   <aside class="sidebar">
-    <div class="sidebar__title">Bing Card System</div>
+    <div style="display:flex; align-items:center; gap:8px;">
+      <div class="sidebar__title">Bing Card System</div>
+      <span style="font-size:10px; font-weight:700; color:var(--smtc-foreground-ctrl-on-brand-rest, white); background:var(--smtc-background-ctrl-brand-rest, #0078d4); padding:2px 6px; border-radius:var(--smtc-corner-circular, 9999px); line-height:14px; transition:background 0.2s, color 0.2s;">v1.2</span>
+    </div>
 
     <div>
       <div class="sidebar__section-title">Theme</div>
@@ -868,16 +909,6 @@
         <button class="bing-tab" role="tab" aria-selected="false" data-tab="product">
           <span class="bing-tab__label">Product Card</span>
           <span class="bing-tab__count">10</span>
-          <span class="bing-tab__indicator"></span>
-        </button>
-<button class="bing-tab" role="tab" aria-selected="false" data-tab="result">
-          <span class="bing-tab__label">Result Card</span>
-          <span class="bing-tab__count">4</span>
-          <span class="bing-tab__indicator"></span>
-        </button>
-        <button class="bing-tab" role="tab" aria-selected="false" data-tab="attachment">
-          <span class="bing-tab__label">Attachment Card</span>
-          <span class="bing-tab__count">6</span>
           <span class="bing-tab__indicator"></span>
         </button>
         <button class="bing-tab" role="tab" aria-selected="false" data-tab="magazine">
@@ -2546,144 +2577,6 @@
 
       </div>
 
-      <!-- ===== RESULT CARD TAB ===== -->
-      <div class="tab-panel" id="panel-result">
-
-        <div class="size-group">
-          <h3 class="size-group__title">Default Result Cards</h3>
-          <div class="size-group__cards" style="flex-direction:column; max-width:640px;">
-            <div class="card-showcase" style="width:100%;">
-              <span class="card-showcase__label">Default Result</span>
-              <article class="bing-card-hover" style="width:100%; background:var(--smtc-background-card-on-primary-default-rest); border-radius:var(--smtc-corner-card-rest); padding:16px;">
-                <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;"><img src="Thumbnail.png" alt="" style="width:16px; height:16px; border-radius:4px; object-fit:cover;"><cite style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary); font-style:normal;">www.anthropic.com</cite></div>
-                <h3 style="margin:0 0 4px; font-size:18px; font-weight:400; line-height:22px;"><a href="#" style="color:var(--smtc-foreground-content-link-default); text-decoration:none;">Anthropic — AI Safety Company</a></h3>
-                <p style="margin:0; font-size:14px; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary); display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;"><strong>Anthropic</strong> is an AI safety company building reliable, interpretable, and steerable AI systems. Our flagship model, <strong>Claude</strong>, is designed to be helpful, harmless, and honest.</p>
-                <nav style="display:flex; flex-wrap:wrap; gap:8px 16px; margin-top:12px; padding-top:8px;"><a href="#" style="font-size:14px; color:var(--smtc-foreground-content-link-default); text-decoration:none;">Research</a><a href="#" style="font-size:14px; color:var(--smtc-foreground-content-link-default); text-decoration:none;">Claude</a><a href="#" style="font-size:14px; color:var(--smtc-foreground-content-link-default); text-decoration:none;">API Docs</a><a href="#" style="font-size:14px; color:var(--smtc-foreground-content-link-default); text-decoration:none;">Careers</a></nav>
-              </article>
-            </div>
-            <div class="card-showcase" style="width:100%;">
-              <span class="card-showcase__label">Result with Thumbnail</span>
-              <article class="bing-card-hover" style="width:100%; background:var(--smtc-background-card-on-primary-default-rest); border-radius:var(--smtc-corner-card-rest); padding:16px; display:flex; gap:16px;">
-                <div style="flex:1; min-width:0;">
-                  <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;"><img src="Thumbnail.png" alt="" style="width:16px; height:16px; border-radius:4px; object-fit:cover;"><cite style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary); font-style:normal;">docs.anthropic.com</cite><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">› api-reference</span></div>
-                  <h3 style="margin:0 0 4px; font-size:18px; font-weight:400; line-height:22px;"><a href="#" style="color:var(--smtc-foreground-content-link-default); text-decoration:none;">Claude API Documentation — Getting Started</a></h3>
-                  <p style="margin:0; font-size:14px; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary); display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">Complete API reference for the <strong>Claude</strong> API. Learn how to send messages, use tools, manage conversations, and integrate <strong>Claude</strong> into your applications.</p>
-                </div>
-                <img src="Thumbnail.png" alt="" style="width:100px; height:100px; border-radius:8px; object-fit:cover; object-position:center; flex-shrink:0;">
-              </article>
-            </div>
-            <div class="card-showcase" style="width:100%;">
-              <span class="card-showcase__label">Featured Result</span>
-              <article class="bing-card-hover" style="width:100%; background:var(--smtc-background-card-on-primary-default-rest); border:1px solid var(--smtc-stroke-card-on-primary-rest); border-radius:var(--smtc-corner-card-rest); padding:16px; box-shadow:0 1px 3px rgba(0,0,0,0.1);">
-                <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;"><img src="Thumbnail.png" alt="" style="width:16px; height:16px; border-radius:4px; object-fit:cover;"><cite style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary); font-style:normal;">claude.ai</cite></div>
-                <h3 style="margin:0 0 4px; font-size:18px; font-weight:400; line-height:22px;"><a href="#" style="color:var(--smtc-foreground-content-link-default); text-decoration:none;">Claude — Talk to Claude, an AI assistant by Anthropic</a></h3>
-                <p style="margin:0; font-size:14px; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary); display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">Chat with <strong>Claude</strong>, an AI assistant from <strong>Anthropic</strong>. <strong>Claude</strong> can help you with writing, analysis, coding, math, and more. Sign up for free to get started.</p>
-              </article>
-            </div>
-            <div class="card-showcase" style="width:100%;">
-              <span class="card-showcase__label">Compact Result</span>
-              <article class="bing-card-hover" style="width:100%; background:var(--smtc-background-card-on-primary-default-rest); border-radius:var(--smtc-corner-card-rest); padding:12px;">
-                <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;"><img src="Thumbnail.png" alt="" style="width:16px; height:16px; border-radius:4px; object-fit:cover;"><cite style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary); font-style:normal;">github.com/anthropics</cite></div>
-                <h3 style="margin:0 0 4px; font-size:16px; font-weight:400; line-height:26px;"><a href="#" style="color:var(--smtc-foreground-content-link-default); text-decoration:none;">Anthropic on GitHub — Open Source Projects</a></h3>
-                <p style="margin:0; font-size:14px; line-height:22px; color:var(--smtc-foreground-content-neutral-secondary); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;"><strong>Anthropic</strong>'s open-source projects including the <strong>Claude</strong> SDK, MCP protocol, and research tools.</p>
-              </article>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- ===== ATTACHMENT CARD TAB ===== -->
-      <div class="tab-panel" id="panel-attachment">
-
-        <div class="size-group">
-          <h3 class="size-group__title">2×2 — 200 × 200px</h3>
-          <div class="size-group__cards">
-            <div class="card-showcase">
-              <span class="card-showcase__label">2×2 Title + Subtitle + Metadata</span>
-              <div class="bing-card-hover" style="width:200px; display:flex; flex-direction:column; gap:4px;">
-                <div style="width:200px; height:130px; border-radius:var(--smtc-corner-card-rest); overflow:hidden;"><img src="Thumbnail.png" alt="" style="width:100%; height:100%; object-fit:cover; object-position:center;"></div>
-                <div style="padding:0 4px; display:flex; flex-direction:column; gap:2px;">
-                  <span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Dario Amodei</span>
-                  <span style="font-size:13px; color:var(--bing-smtc-foreground-content-neutral-tertiary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">CEO, Anthropic</span>
-                  <span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">San Francisco, CA</span>
-                </div>
-              </div>
-            </div>
-            <div class="card-showcase">
-              <span class="card-showcase__label">2×2 Source + Title</span>
-              <div class="bing-card-hover" style="width:200px; display:flex; flex-direction:column; gap:4px;">
-                <div style="width:200px; height:130px; border-radius:var(--smtc-corner-card-rest); overflow:hidden;"><img src="Thumbnail.png" alt="" style="width:100%; height:100%; object-fit:cover; object-position:center;"></div>
-                <div style="padding:0 4px; display:flex; flex-direction:column; gap:2px;">
-                  <div style="display:flex; align-items:center; gap:4px;"><img src="Thumbnail.png" alt="" style="width:16px; height:16px; border-radius:4px; object-fit:cover;"><span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">anthropic.com</span></div>
-                  <span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Research at Anthropic</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="size-group">
-          <h3 class="size-group__title">1.4×2 — 140 × 200px</h3>
-          <div class="size-group__cards">
-            <div class="card-showcase">
-              <span class="card-showcase__label">1.4×2 Narrow</span>
-              <div class="bing-card-hover" style="width:140px; display:flex; flex-direction:column; gap:4px;">
-                <div style="width:140px; height:130px; border-radius:var(--smtc-corner-card-rest); overflow:hidden;"><img src="Thumbnail.png" alt="" style="width:100%; height:100%; object-fit:cover; object-position:center;"></div>
-                <div style="padding:0 4px; display:flex; flex-direction:column; gap:2px;">
-                  <span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Claude Pro</span>
-                  <span style="font-size:13px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">$20/mo</span>
-                </div>
-              </div>
-            </div>
-            <div class="card-showcase">
-              <span class="card-showcase__label">1.4×2 With Badge</span>
-              <div class="bing-card-hover" style="width:140px; display:flex; flex-direction:column; gap:4px;">
-                <div style="width:140px; height:130px; border-radius:var(--smtc-corner-card-rest); overflow:hidden; position:relative;"><img src="Thumbnail.png" alt="" style="width:100%; height:100%; object-fit:cover; object-position:center;"><span style="position:absolute; top:8px; left:8px; background:var(--smtc-foreground-content-brand-primary); color:white; font-size:11px; font-weight:700; padding:2px 4px; border-radius:4px;">New</span></div>
-                <div style="padding:0 4px; display:flex; flex-direction:column; gap:2px;">
-                  <span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Claude Team</span>
-                  <span style="font-size:13px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">$25/seat</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="size-group">
-          <h3 class="size-group__title">1.4×3 — 140 × 312px</h3>
-          <div class="size-group__cards">
-            <div class="card-showcase">
-              <span class="card-showcase__label">1.4×3 Tall Narrow</span>
-              <div class="bing-card-hover" style="width:140px; display:flex; flex-direction:column; gap:4px;">
-                <div style="width:140px; height:240px; border-radius:var(--smtc-corner-card-rest); overflow:hidden;"><img src="Thumbnail.png" alt="" style="width:100%; height:100%; object-fit:cover; object-position:center;"></div>
-                <div style="padding:0 4px; display:flex; flex-direction:column; gap:2px;">
-                  <span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Anthropic HQ</span>
-                  <span style="font-size:13px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">San Francisco</span>
-                  <span style="font-size:11px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">AI Research Lab</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="size-group">
-          <h3 class="size-group__title">3×2 — 312 × 200px</h3>
-          <div class="size-group__cards">
-            <div class="card-showcase">
-              <span class="card-showcase__label">3×2 Wide Attachment</span>
-              <div class="bing-card-hover" style="width:312px; display:flex; flex-direction:column; gap:4px;">
-                <div style="width:312px; height:160px; border-radius:var(--smtc-corner-card-rest); overflow:hidden;"><img src="Thumbnail.png" alt="" style="width:100%; height:100%; object-fit:cover; object-position:center;"></div>
-                <div style="padding:0 4px; display:flex; flex-direction:column; gap:2px;">
-                  <span style="font-size:14px; font-weight:700; color:var(--smtc-foreground-content-neutral-primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Anthropic's Responsible Scaling Policy</span>
-                  <span style="font-size:13px; color:var(--bing-smtc-foreground-content-neutral-tertiary);">A framework for safe AI development</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
       <!-- ===== MAGAZINE TEMPLATE TAB ===== -->
       <div class="tab-panel" id="panel-magazine">
 
@@ -3562,16 +3455,47 @@
     const tabs = document.querySelectorAll('.bing-tab');
     const panels = document.querySelectorAll('.tab-panel');
 
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => { t.classList.remove('bing-tab--selected'); t.setAttribute('aria-selected', 'false'); });
-        panels.forEach(p => p.classList.remove('tab-panel--active'));
-        tab.classList.add('bing-tab--selected');
-        tab.setAttribute('aria-selected', 'true');
-        const panelId = 'panel-' + tab.dataset.tab;
-        document.getElementById(panelId).classList.add('tab-panel--active');
-        updateStats();
-      });
+    function activateTab(tab) {
+      tabs.forEach(t => { t.classList.remove('bing-tab--selected'); t.setAttribute('aria-selected', 'false'); t.setAttribute('tabindex', '-1'); });
+      panels.forEach(p => p.classList.remove('tab-panel--active'));
+      tab.classList.add('bing-tab--selected');
+      tab.setAttribute('aria-selected', 'true');
+      tab.setAttribute('tabindex', '0');
+      tab.focus();
+      const panelId = 'panel-' + tab.dataset.tab;
+      document.getElementById(panelId).classList.add('tab-panel--active');
+      // Scroll tab into view if needed
+      tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+      updateStats();
+    }
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => activateTab(tab));
+      // Set initial tabindex: only selected tab is tabbable
+      tab.setAttribute('tabindex', tab.classList.contains('bing-tab--selected') ? '0' : '-1');
+    });
+
+    // Arrow key navigation per ARIA tabs pattern
+    document.querySelector('.bing-tabs-list').addEventListener('keydown', (e) => {
+      const tabArr = Array.from(tabs);
+      const currentIdx = tabArr.indexOf(document.activeElement);
+      if (currentIdx === -1) return;
+      let nextIdx;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        nextIdx = (currentIdx + 1) % tabArr.length;
+        activateTab(tabArr[nextIdx]);
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        nextIdx = (currentIdx - 1 + tabArr.length) % tabArr.length;
+        activateTab(tabArr[nextIdx]);
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        activateTab(tabArr[0]);
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        activateTab(tabArr[tabArr.length - 1]);
+      }
     });
 
     // ---- Theme Switching ----
